@@ -1,5 +1,3 @@
-# Evans-Joy-P0
-
 <h1 align="center"> CrownReady Beauty Supply </h1> <br>
 
 <!-- Optional: Add logo -->
