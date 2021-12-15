@@ -1,0 +1,40 @@
+CrownReady Beauty Supply Application
+
+This application allows users to purchase and leave reviews on beauty products.
+
+- Create and login user accounts
+- Browse through products
+- Add items to cart and complete purchase
+- Users can add review to products
+
+User Stories
+1. Users should be able to create/login to account
+2. Users should be view products and verify product availbilty
+3. Users should be add reviews and read reviews 
+4. Users should be able to add products to cart
+5. Users should be able to checkout cart
+
+Models needed
+- StoreFront (address, name, inventory)
+- Inventory (product, quantity)
+- Products (name, description, price, review)
+- Customers (name, email)
+- Reviews (customer name(nickname), rating, review)
+- Orders (storefront, product, customer) ?
+
+Workflow
+1. I want to hide this functionality unless they're logged in
+    - First, I need to be able to tell if they're logged in or not
+    - Maybe I'll have this currentCustomer thing that I keep track of, that will be null before I log in (So once they 'login', the current customer is not null, and has current customer info)
+    - And then once I know that it's not null, then I'll display this menu
+2. Prompt the user to log in (if they haven't)
+    - I need to go back to the log in menu (of a sort)
+    - And then give them log in screen again
+3. Prompt them to select which storefront to browse
+    - First, I need to grab all storefronts
+    - Iterate through the stores and display them
+    - Once they select the storefront, save it somewhere so I can query the inventory of the store
+4. Once they select a storefront, query the inventory of the storefront
+    - Find all inventory that belongs to the storefront
+    - Then iterate through that list and display the inventory accordingly
+5. Display the storefront inventory with (its quantity, maybe?)
