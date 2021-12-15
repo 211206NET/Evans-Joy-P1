@@ -1,8 +1,30 @@
 ﻿using StoreFront;
+using System.Collections.Generic; //this is temp storage
 
 Console.Out.NewLine = "\r\n\r\n"; //For more info check out link: https://www.sitereq.com/post/6-ways-to-insert-new-line-in-c-and-aspnet
 
 bool exit = false;
+
+StoreFrontDetail locationOne = new StoreFrontDetail();
+locationOne.name = "CrownReady - Pearland";
+locationOne.address = "random address";
+
+StoreFrontDetail locationTwo = new StoreFrontDetail();
+locationTwo.name = "CrownReady - Sugar Land";
+locationTwo.address = "random address";
+
+StoreFrontDetail locationThree = new StoreFrontDetail();
+locationThree.name = "CrownReady - Houston";
+locationThree.address = "random address";
+
+// Console.WriteLine(locationOne.DisplayStoreFront());
+// Console.WriteLine(locationTwo.DisplayStoreFront());
+// Console.WriteLine(locationThree.DisplayStoreFront());
+
+List<StoreFrontDetail> storesLocations = new List<StoreFrontDetail>();
+storesLocations.Add(locationOne);
+storesLocations.Add(locationTwo);
+storesLocations.Add(locationThree);
 
     // Optional: Strongly considering having 'readline' be a standout color from 'writeline'
     Console.WriteLine("Hello, Welcome to CrownReady Beauty Supply!");
@@ -16,6 +38,7 @@ bool exit = false;
     // they'll proceed to the main menu
 do
 {
+
     Console.WriteLine("So what would you like to do today?");
     Console.WriteLine("[1] Find locations");
     Console.WriteLine("[2] View products");
@@ -31,21 +54,11 @@ do
         case "1":
             Console.WriteLine("All locations");
 
-            StoreFrontDetail locationOne = new StoreFrontDetail();
-            locationOne.name = "CrownReady - Pearland";
-            locationOne.address = "random address";
+            foreach(StoreFrontDetail storeFrontDetail in storesLocations)
+            {
+                Console.WriteLine(storeFrontDetail.DisplayStoreFront());
+            }
 
-            StoreFrontDetail locationTwo = new StoreFrontDetail();
-            locationTwo.name = "CrownReady - Sugar Land";
-            locationTwo.address = "random address";
-
-            StoreFrontDetail locationThree = new StoreFrontDetail();
-            locationThree.name = "CrownReady - Houston";
-            locationThree.address = "random address";
-
-            Console.WriteLine(locationOne.DisplayStoreFront());
-            Console.WriteLine(locationTwo.DisplayStoreFront());
-            Console.WriteLine(locationThree.DisplayStoreFront());
         break;
         case "2":
             Console.WriteLine("View products");
