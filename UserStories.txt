@@ -41,3 +41,6 @@ Workflow
     - Find all inventory that belongs to the storefront
     - Then iterate through that list and display the inventory accordingly
 5. Display the storefront inventory with (its quantity, maybe?)
+6. Once they select a product they'll see product details including reviews and current availability
+7. They'll have the option to add the product to cart
+8. They'll be able to purchase products in cart
