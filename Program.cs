@@ -18,20 +18,40 @@ Console.WriteLine("[3] View cart");
 Console.WriteLine("[x] Logout"); //Optional: have text be shown in red
 // Things to consider:
 // 1. If you choose to view products, 
-// 1. If you choose to find locations, the user can set location as store 
+// 1. If you choose to find locations, the user can set location as store
+string input = Console.ReadLine();
 
-StoreFrontDetail locationOne = new StoreFrontDetail();
-locationOne.name = "CrownReady - Pearland";
-locationOne.address = "random address";
+switch(input)
+{
+    case "1":
+        Console.WriteLine("Find locations");
+    break;
+    
+    case "2":
+        Console.WriteLine("View products");
+    break;
 
-StoreFrontDetail locationTwo = new StoreFrontDetail();
-locationTwo.name = "CrownReady - Sugar Land";
-locationTwo.address = "random address";
+    case "3":
+        Console.WriteLine("View cart");
+    break;
+    
+    default:
+        Console.WriteLine("Sorry about that but I don't understand");
+    break;
+}
 
-StoreFrontDetail locationThree = new StoreFrontDetail();
-locationThree.name = "CrownReady - Houston";
-locationThree.address = "random address";
+// StoreFrontDetail locationOne = new StoreFrontDetail();
+// locationOne.name = "CrownReady - Pearland";
+// locationOne.address = "random address";
 
-Console.WriteLine(locationOne.DisplayStoreFront());
-Console.WriteLine(locationTwo.DisplayStoreFront());
-Console.WriteLine(locationThree.DisplayStoreFront());
+// StoreFrontDetail locationTwo = new StoreFrontDetail();
+// locationTwo.name = "CrownReady - Sugar Land";
+// locationTwo.address = "random address";
+
+// StoreFrontDetail locationThree = new StoreFrontDetail();
+// locationThree.name = "CrownReady - Houston";
+// locationThree.address = "random address";
+
+// Console.WriteLine(locationOne.DisplayStoreFront());
+// Console.WriteLine(locationTwo.DisplayStoreFront());
+// Console.WriteLine(locationThree.DisplayStoreFront());
