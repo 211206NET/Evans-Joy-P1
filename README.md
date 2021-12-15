@@ -16,9 +16,9 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-<!-- - [Features](#features)
-- [Feedback](#feedback)
-- [Build Process](#build-process)
+- [Features](#features)
+<!-- - [Feedback](#feedback) -->
+<!-- - [Build Process](#build-process) -->
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
