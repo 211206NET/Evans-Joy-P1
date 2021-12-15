@@ -1,4 +1,6 @@
-﻿Console.Out.NewLine = "\r\n\r\n"; //For more info check out link: https://www.sitereq.com/post/6-ways-to-insert-new-line-in-c-and-aspnet
+﻿using StoreFront;
+
+Console.Out.NewLine = "\r\n\r\n"; //For more info check out link: https://www.sitereq.com/post/6-ways-to-insert-new-line-in-c-and-aspnet
 // Optional: Strongly considering having 'readline' be a standout color from 'writeline'
 Console.WriteLine("Hello, Welcome to CrownReady Beauty Supply!");
 Console.WriteLine("The place where you find ... no matter your skin type of hair texture");
@@ -18,3 +20,18 @@ Console.WriteLine("[x] Logout"); //Optional: have text be shown in red
 // 1. If you choose to view products, 
 // 1. If you choose to find locations, the user can set location as store 
 
+StoreFrontDetail locationOne = new StoreFrontDetail();
+locationOne.name = "CrownReady - Pearland";
+locationOne.address = "random address";
+
+StoreFrontDetail locationTwo = new StoreFrontDetail();
+locationTwo.name = "CrownReady - Sugar Land";
+locationTwo.address = "random address";
+
+StoreFrontDetail locationThree = new StoreFrontDetail();
+locationThree.name = "CrownReady - Houston";
+locationThree.address = "random address";
+
+Console.WriteLine(locationOne.DisplayStoreFront());
+Console.WriteLine(locationTwo.DisplayStoreFront());
+Console.WriteLine(locationThree.DisplayStoreFront());
