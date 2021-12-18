@@ -2,9 +2,10 @@
 using System.Collections.Generic; //this is temp storage
 
 Console.Out.NewLine = "\r\n\r\n"; //For more info check out link: https://www.sitereq.com/post/6-ways-to-insert-new-line-in-c-and-aspnet
-
+Console.ForegroundColor = ConsoleColor.Cyan;
 bool exit = false;
 
+// Testing for various Storefront locations:
 StoreFrontDetail locationOne = new StoreFrontDetail();
 locationOne.name = "CrownReady - Pearland";
 locationOne.address = "random address";
@@ -16,10 +17,6 @@ locationTwo.address = "random address";
 StoreFrontDetail locationThree = new StoreFrontDetail();
 locationThree.name = "CrownReady - Houston";
 locationThree.address = "random address";
-
-// Console.WriteLine(locationOne.DisplayStoreFront());
-// Console.WriteLine(locationTwo.DisplayStoreFront());
-// Console.WriteLine(locationThree.DisplayStoreFront());
 
 List<StoreFrontDetail> storesLocations = new List<StoreFrontDetail>();
 storesLocations.Add(locationOne);
@@ -39,6 +36,7 @@ storesLocations.Add(locationThree);
 do
 {
 
+    Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("So what would you like to do today?");
     Console.WriteLine("[1] Find locations");
     Console.WriteLine("[2] View products");
@@ -54,7 +52,9 @@ do
         case "1":
             Console.WriteLine("All locations");
 
+            // code below for displaying each StoreFront location
             foreach(StoreFrontDetail storeFrontDetail in storesLocations)
+            // foreach({c# filename} {empty constructor } in {list name})
             {
                 Console.WriteLine(storeFrontDetail.DisplayStoreFront());
             }
