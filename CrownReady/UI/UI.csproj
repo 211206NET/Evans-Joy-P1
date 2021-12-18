@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <!-- the above line was created by running 'dotnet add reference ../Models/' -->
+    <!-- that command helps the program.cs file locate files inside the Models directory -->
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>

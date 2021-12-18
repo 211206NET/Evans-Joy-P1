@@ -1,8 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// using StoreFront;
+// changing to 'using Models' to make things consistant
+using Models;
 
-// using StoreFront;
-// using System.Collections.Generic; //this is temp storage
+using System.Collections.Generic; //this is temp storage
 
 // Console.Out.NewLine = "\r\n\r\n"; //For more info check out link: https://www.sitereq.com/post/6-ways-to-insert-new-line-in-c-and-aspnet
 Console.ForegroundColor = ConsoleColor.Cyan;
