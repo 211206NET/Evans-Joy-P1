@@ -1,5 +1,6 @@
-namespace StoreFront;
-// testing
+// namespace StoreFront;
+// changing to 'namespace Models' to make things consistant
+namespace Models;
 public class StoreFrontDetail{
     // things to consider: whether or not it should be changed to private instead of public
     public StoreFrontDetail() {}
