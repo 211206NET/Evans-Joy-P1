@@ -10,13 +10,11 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/bin/Debug/net6.0/BeautySupply.dll",
+            "program": "${workspaceFolder}/P0/UI/bin/Debug/net6.0/UI.dll",
             "args": [],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/P0/UI",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "integratedTerminal",
-            // To be able to debug application, change "console" from "internalConsole" to "integratedTerminal"
-            // "console": "internalConsole",
+            "console": "internalConsole",
             "stopAtEntry": false
         },
         {
