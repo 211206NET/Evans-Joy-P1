@@ -2,9 +2,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
-    <!-- the above line was created by running 'dotnet add reference ../Models/' -->
-    <!-- that command helps the program.cs file locate files inside the Models directory -->
   </ItemGroup>
+    <!-- Lines 3-4 was created by running 'dotnet add reference ../Models/' -->
+    <!-- That command helps the program.cs file locate files inside the Models directory -->
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
