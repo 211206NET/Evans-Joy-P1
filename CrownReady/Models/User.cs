@@ -46,12 +46,14 @@ public class User{
             {
                 // If user input == Login, ask for user.email
                 case "L":
-                Console.WriteLine("Login");
+                Console.WriteLine("You successfully logged in!");
+                exit = true;
                 break;
 
                 // If user input == Create an account, ask for user.name and user.email
                 case "S":
-                Console.WriteLine("Signup");
+                Console.WriteLine("You successfully signed up!");
+                exit = true;
                 break;
                 
                 default:
