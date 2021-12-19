@@ -31,17 +31,12 @@ public class MainMenu {
         storesLocations.Add(locationOne);
         storesLocations.Add(locationTwo);
         storesLocations.Add(locationThree);
+        
+        // the function below is for greeting the user and asking them to either
+        // login or sign up
+        User menu = new User();
+        menu.Greeting();
 
-            // Optional: Strongly considering having 'readline' be a standout color from 'writeline'
-            Console.WriteLine("Hello, Welcome to CrownReady Beauty Supply!");
-            Console.WriteLine("The place where you find ... no matter your skin type of hair texture");
-            Console.WriteLine("Let's get started! Login or Create an account");
-            // If user input == Login, ask for user.email
-            // If user input == Create an account, ask for user.name and user.email
-            // else, ask user to "Try again" and loop back to main menu
-
-            // Once the user successfully either creates an account or login, 
-            // they'll proceed to the main menu
         do
         {
 
