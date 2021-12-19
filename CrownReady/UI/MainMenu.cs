@@ -16,19 +16,19 @@ public class MainMenu {
         bool exit = false;
 
         // Testing for various Storefront locations:
-        StoreFrontDetail locationOne = new StoreFrontDetail();
+        StoreFront locationOne = new StoreFront();
         locationOne.name = "CrownReady - Pearland";
         locationOne.address = "random address";
 
-        StoreFrontDetail locationTwo = new StoreFrontDetail();
+        StoreFront locationTwo = new StoreFront();
         locationTwo.name = "CrownReady - Sugar Land";
         locationTwo.address = "random address";
 
-        StoreFrontDetail locationThree = new StoreFrontDetail();
+        StoreFront locationThree = new StoreFront();
         locationThree.name = "CrownReady - Houston";
         locationThree.address = "random address";
 
-        List<StoreFrontDetail> allLocations = new List<StoreFrontDetail>();
+        List<StoreFront> allLocations = new List<StoreFront>();
         allLocations.Add(locationOne);
         allLocations.Add(locationTwo);
         allLocations.Add(locationThree);
@@ -58,7 +58,7 @@ public class MainMenu {
                     Console.WriteLine("All locations");
 
                     // code below for displaying each StoreFront location
-                    foreach(StoreFrontDetail storeFrontDetail in allLocations)
+                    foreach(StoreFront storeFrontDetail in allLocations)
                     // foreach({c# filename} {empty constructor } in {list name})
                     {
                         Console.WriteLine(storeFrontDetail.DisplayStoreFront());

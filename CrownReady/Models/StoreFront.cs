@@ -1,9 +1,9 @@
 // namespace StoreFront;
 // changing to 'namespace Models' to make things consistant
 namespace Models;
-public class StoreFrontDetail{
+public class StoreFront{
     // things to consider: whether or not it should be changed to private instead of public
-    public StoreFrontDetail() {}
+    public StoreFront() {}
     public string address { get; set; }
     public string name { get; set; }
 
