@@ -11,10 +11,20 @@ public class User{
 
     public string SignUp(string name, string email){
         this.Name = name; 
-        this.Email = name; 
+        this.Email = name;
+        return "SignUp Method";
     }
-    public string LogIn(){
+    // public void SignUp(string name, string email){
+    //     this.Name = name; 
+    //     this.Email = name; 
+    // }
+    public string Login(string name, string email){
         this.Name = name; 
         this.Email = name;
+        return "SignUp Method";
     }
+    // public void LogIn(string name, string email){
+    //     this.Name = name; 
+    //     this.Email = name;
+    // }
 }
