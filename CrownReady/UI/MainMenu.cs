@@ -1,4 +1,5 @@
 using Models;
+using DL;
 
 namespace UI;
 
@@ -27,10 +28,10 @@ public class MainMenu {
         locationThree.name = "CrownReady - Houston";
         locationThree.address = "random address";
 
-        List<StoreFrontDetail> storesLocations = new List<StoreFrontDetail>();
-        storesLocations.Add(locationOne);
-        storesLocations.Add(locationTwo);
-        storesLocations.Add(locationThree);
+        List<StoreFrontDetail> allLocations = new List<StoreFrontDetail>();
+        allLocations.Add(locationOne);
+        allLocations.Add(locationTwo);
+        allLocations.Add(locationThree);
         
         // the function below is for greeting the user and asking them to either
         // login or sign up
@@ -57,7 +58,7 @@ public class MainMenu {
                     Console.WriteLine("All locations");
 
                     // code below for displaying each StoreFront location
-                    foreach(StoreFrontDetail storeFrontDetail in storesLocations)
+                    foreach(StoreFrontDetail storeFrontDetail in allLocations)
                     // foreach({c# filename} {empty constructor } in {list name})
                     {
                         Console.WriteLine(storeFrontDetail.DisplayStoreFront());
