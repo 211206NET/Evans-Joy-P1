@@ -92,6 +92,7 @@ public class MainMenu {
                 else
                 {
                     Console.WriteLine("Try Again.");
+                    // this runs twice for some strange reason.
                 }
                 
                 }
@@ -100,8 +101,20 @@ public class MainMenu {
 
                 // If user input == Create an account, ask for user.name and user.email
                 case "2":
-                Console.WriteLine("You successfully signed up!");
+                // looking to create
+                Console.WriteLine("Name:");
+                string name = Console.ReadLine();
+                Console.WriteLine("Email:");
+                string email = Console.ReadLine();
+                User newUser = new User {
+                    Name = name,
+                    Email = email
+                };
+                // then add new user to list
+                allUsers.Add(newUser);
+                Console.WriteLine($"Congrats {name}! You successfully signed up!");
                 close = true;
+                // also make sure the user's account don't already exist
                 break;
                 
                 default:
