@@ -4,7 +4,7 @@ using BL;
 
 namespace UI;
 
-using System.Collections.Generic; //this is temp storage
+using System.Collections.Generic; //this is temp storage for models: User, Storefront
 
 // create a public class called 'MainMenu'
 public class MainMenu {
@@ -42,11 +42,72 @@ public class MainMenu {
         allLocations.Add(locationOne);
         allLocations.Add(locationTwo);
         allLocations.Add(locationThree);
+
+        // Testing for various users:
+        User userOne = new User();
+        userOne.Name = "Joy";
+        userOne.Email = "joy@email.com";
+
+        List<User> allUsers = new List<User>();
+        allUsers.Add(userOne);
         
         // the function below is for greeting the user and asking them to either
         // login or sign up
-        User menu = new User();
-        menu.Greeting();
+        // User menu = new User();
+        // menu.Greeting();
+
+        bool close = false;
+
+        do
+        {
+
+        // Optional: Strongly considering having 'readline' be a standout color from 'writeline'
+        Console.WriteLine("Hello, Welcome to CrownReady Beauty Supply!");
+        Console.WriteLine("The place where you find ... no matter your skin type or hair texture");
+        Console.WriteLine("Let's get started! Login or Create an account");
+
+        string response = Console.ReadLine();
+
+        switch(response)
+            {
+                // If user input == Login, ask for user.email
+                case "L":
+                Console.WriteLine("Email:");
+                string input = Console.ReadLine();
+                
+                foreach (User user in allUsers)
+                {
+
+                if (user.Email.Contains(input))
+                // if (input == "joy@email.com")
+                {
+                    Console.WriteLine("You successfully logged in!");
+                    close = true;
+                }
+                else
+                {
+                    Console.WriteLine("Try Again.");
+                }
+                
+                }
+
+                break;
+
+                // If user input == Create an account, ask for user.name and user.email
+                case "S":
+                Console.WriteLine("You successfully signed up!");
+                close = true;
+                break;
+                
+                default:
+                // else, ask user to "Try again" and loop back to main menu
+                Console.WriteLine("Sorry, Try again");
+                break;
+            }
+            
+        } while (!close);
+        // Once the user successfully either creates an account or login, 
+        // they'll proceed to the main menu
 
         do
         {
