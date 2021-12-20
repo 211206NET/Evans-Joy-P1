@@ -1,5 +1,6 @@
 using Models;
-using DL;
+// using DL;
+using BL;
 
 namespace UI;
 
@@ -7,6 +8,15 @@ using System.Collections.Generic; //this is temp storage
 
 // create a public class called 'MainMenu'
 public class MainMenu {
+
+    private CRBL _bl;
+
+    public MainMenu()
+    {
+        _bl = new CRBL();
+    }
+
+
 
     // create method inside class to hold code from Program.cs file
     public void Start() {
