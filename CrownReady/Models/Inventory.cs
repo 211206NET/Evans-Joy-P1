@@ -5,7 +5,7 @@ public class Inventory{
     public Inventory() {}
 
     // setting up automatic properties: product, quantity
-    public string Product {get; set;}
-    public int Quantity {get; set;}
+    public string Product { get; set; }
+    public int Quantity { get; set; }
     
 }
