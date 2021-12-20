@@ -47,9 +47,13 @@ public class MainMenu {
         User userOne = new User();
         userOne.Name = "Joy";
         userOne.Email = "joy@email.com";
+        User userTwo = new User();
+        userTwo.Name = "Test";
+        userTwo.Email = "test@email.com";
 
         List<User> allUsers = new List<User>();
         allUsers.Add(userOne);
+        allUsers.Add(userTwo);
         
         // the function below is for greeting the user and asking them to either
         // login or sign up
@@ -64,14 +68,16 @@ public class MainMenu {
         // Optional: Strongly considering having 'readline' be a standout color from 'writeline'
         Console.WriteLine("Hello, Welcome to CrownReady Beauty Supply!");
         Console.WriteLine("The place where you find ... no matter your skin type or hair texture");
-        Console.WriteLine("Let's get started! Login or Create an account");
+        Console.WriteLine("Let's get started!");
+        Console.WriteLine("[1] Login");
+        Console.WriteLine("[2] Create Account");
 
         string response = Console.ReadLine();
 
         switch(response)
             {
                 // If user input == Login, ask for user.email
-                case "L":
+                case "1":
                 Console.WriteLine("Email:");
                 string input = Console.ReadLine();
                 
@@ -79,9 +85,8 @@ public class MainMenu {
                 {
 
                 if (user.Email.Contains(input))
-                // if (input == "joy@email.com")
                 {
-                    Console.WriteLine("You successfully logged in!");
+                    Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
                     close = true;
                 }
                 else
@@ -94,7 +99,7 @@ public class MainMenu {
                 break;
 
                 // If user input == Create an account, ask for user.name and user.email
-                case "S":
+                case "2":
                 Console.WriteLine("You successfully signed up!");
                 close = true;
                 break;
