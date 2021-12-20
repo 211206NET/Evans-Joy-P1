@@ -45,7 +45,7 @@ A few of the things you can do with CrownReady:
 * Control your unread and participating notifications
 * Easily search for any user or repository -->
 
-<p align="center">
+<!-- <p align="center">
   <img src = "http://i.imgur.com/IkSnFRL.png" width=700>
 </p>
 
@@ -70,4 +70,4 @@ If there's anything you'd like to chat about, please feel free to join our [Gitt
 
 <!-- Please take a look at the [contributing guidelines](./CONTRIBUTING.md) for a detailed process on how to build your application as well as troubleshooting information. -->
 
-<!-- **Development Keys**: The `CLIENT_ID` and `CLIENT_SECRET` in `api/index.js` are for development purposes and do not represent the actual application keys. Feel free to use them or use a new set of keys by creating an [OAuth application](https://github.com/settings/applications/new) of your own. Set the "Authorization callback URL" to `gitpoint://welcome`. --> -->
+<!-- **Development Keys**: The `CLIENT_ID` and `CLIENT_SECRET` in `api/index.js` are for development purposes and do not represent the actual application keys. Feel free to use them or use a new set of keys by creating an [OAuth application](https://github.com/settings/applications/new) of your own. Set the "Authorization callback URL" to `gitpoint://welcome`. -->
