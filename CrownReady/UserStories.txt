@@ -20,7 +20,7 @@ User Stories
 Models needed
 - StoreFront (address, name, inventory)
 - Inventory (product, quantity)
-- Products (name, description, price, review)
+- Products (name, description, price, and maybe review)
 - Customers (name, email)
 - Reviews (customer name(nickname), rating, review)
 - Orders (storefront, product, customer) ?
