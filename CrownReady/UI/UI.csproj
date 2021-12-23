@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
+    <!-- <ProjectReference Include="..\DL\DL.csproj" /> -->
+    <ProjectReference Include="..\BL\BL.csproj" />
   </ItemGroup>
     <!-- Lines 3-5 was created by running 'dotnet add reference ../Models/' -->
     <!-- That command helps the program.cs file locate files inside the Models directory -->
