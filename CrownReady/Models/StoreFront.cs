@@ -8,6 +8,7 @@ public class StoreFront{
     public string name { get; set; }
 
     // Placeholder: this line should be for inventory
+    public List<Inventory> Inventories { get; set; }
 
     public string DisplayStoreFront()
     {
