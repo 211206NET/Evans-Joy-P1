@@ -6,16 +6,17 @@ This application allows users to purchase and leave reviews on beauty products.
 - Change storefronts and display available inventory in each storefront
 - Browse through products and confirm availability
 - Add items to cart and complete purchase
-- Users can add reviews to products
-===BONUS===
 - View previous orders
+===BONUS===
+- Users can add reviews to products
 
 User Stories
 1. Users should be able to create/login to account
 2. Users should be view products and verify product availability
-3. Users should be add reviews and read reviews 
-4. Users should be able to add products to cart
-5. Users should be able to checkout cart
+3. Users should be able to add products to cart
+4. Users should be able to checkout cart
+===BONUS===
+5. Users should be add reviews and read reviews
 
 Models needed
 - StoreFront (address, name, inventory)
