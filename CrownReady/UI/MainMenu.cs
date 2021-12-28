@@ -27,17 +27,36 @@ public class MainMenu {
 
         // Testing for various Storefront locations:
         StoreFront locationOne = new StoreFront();
-        locationOne.name = "CrownReady - Pearland";
-        locationOne.address = "random address";
+        // locationOne.Name = "CrownReady - Pearland";
+        locationOne.SetName("CrownReady - Pearland");
+        // locationOne.Address = "random address";
+        locationOne.SetAddress("random address");
+        // locationOne.City = "Pearland";
+        locationOne.SetCity("Pearland");
+        // locationOne.State = "TX";
+        locationOne.SetState("TX");
 
         StoreFront locationTwo = new StoreFront();
-        locationTwo.name = "CrownReady - Sugar Land";
-        locationTwo.address = "random address";
+        // locationTwo.Name = "CrownReady - Sugar Land";
+        locationTwo.SetName("CrownReady - Sugar Land");
+        // locationTwo.Address = "random address";
+        locationTwo.SetAddress("random address");
+        // locationTwo.City = "Sugar Land";
+        locationTwo.SetCity("Sugar Land");
+        // locationTwo.State = "TX";
+        locationTwo.SetState("TX");
 
         StoreFront locationThree = new StoreFront();
-        locationThree.name = "CrownReady - Houston";
-        locationThree.address = "random address";
+        // locationThree.Name = "CrownReady - Houston";
+        locationThree.SetName("CrownReady - Houston");
+        // locationThree.Address = "random address";
+        locationThree.SetAddress("random address");
+        // locationThree.City = "Houston";
+        locationThree.SetCity("Houston");
+        // locationThree.State = "TX";
+        locationThree.SetState("TX");
 
+        // initialize list of storefront locations
         List<StoreFront> allLocations = new List<StoreFront>();
         allLocations.Add(locationOne);
         allLocations.Add(locationTwo);
@@ -152,7 +171,7 @@ public class MainMenu {
                     {
                         Console.WriteLine(storeFrontDetail.DisplayStoreFront());
                     }
-
+                // create an option to return to the main menu
                 break;
                 case "2":
                     Console.WriteLine("View products");
