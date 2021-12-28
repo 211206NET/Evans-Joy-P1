@@ -4,8 +4,10 @@ namespace Models;
 public class StoreFront{
     // things to consider: whether or not it should be changed to private instead of public
     public StoreFront() {}
-    public string address { get; set; }
     public string name { get; set; }
+    public string address { get; set; }
+    public string city { get; set; }
+    public string state { get; set; }
 
     // Placeholder: this line should be for inventory
     public List<Inventory> Inventories { get; set; }
