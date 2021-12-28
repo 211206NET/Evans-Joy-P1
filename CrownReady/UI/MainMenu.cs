@@ -175,11 +175,15 @@ public class MainMenu {
                 // create an option to return to the main menu
                 break;
                 case "2":
-                    Console.WriteLine("Shop locations");
+                    Console.WriteLine("Select a location:");
                     for(int i = 0; i < allLocations.Count; i++)
                     {
-                        Console.WriteLine($" [{i}] name: {allLocations[i].GetName()}");
+                        Console.WriteLine($" [{i}] name: {allLocations[i].GetName()}: {allLocations[i].GetAddress()}, {allLocations[i].GetCity()}, {allLocations[i].GetState()}");
                     }
+                    int selection = int.Parse(Console.ReadLine());
+                    StoreFront selectStoreFront = allLocations[selection];
+
+                    Console.WriteLine($"Welcome to {selectStoreFront.GetName()}");
                 break;
                 case "3":
                     Console.WriteLine("View products");
