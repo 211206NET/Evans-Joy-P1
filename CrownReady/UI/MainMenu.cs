@@ -81,84 +81,84 @@ public class MainMenu {
 
         bool close = false;
 
-        // do
-        // {
+        do
+        {
 
-        // // Optional: Strongly considering having 'readline' be a standout color from 'writeline'
-        // Console.WriteLine("Hello, Welcome to CrownReady Beauty Supply!");
-        // Console.WriteLine("The place where you find ... no matter your skin type or hair texture");
-        // Console.WriteLine("Let's get started!");
-        // Console.WriteLine("[1] Login");
-        // Console.WriteLine("[2] Create Account");
+        // Optional: Strongly considering having 'readline' be a standout color from 'writeline'
+        Console.WriteLine("Hello, Welcome to CrownReady Beauty Supply!");
+        Console.WriteLine("The place where you find ... no matter your skin type or hair texture");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Let's get started!");
+        Console.WriteLine("[1] Login");
+        Console.WriteLine("[2] Create Account");
 
-        // string response = Console.ReadLine();
+        string response = Console.ReadLine();
 
-        // switch(response)
-        //     {
-        //         // If user input == Login, ask for user.email
-        //         case "1":
-        //         Console.WriteLine("Email:");
-        //         string input = Console.ReadLine();
+        switch(response)
+            {
+                // If user input == Login, ask for user.email
+                case "1":
+                Console.WriteLine("Email:");
+                string input = Console.ReadLine();
                 
-        //         foreach (User user in allUsers)
-        //         {
+                foreach (User user in allUsers)
+                {
 
-        //         if (user.Email.Contains(input))
-        //         {
-        //             Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
-        //             close = true;
-        //         }
-        //         else
-        //         {
-        //             Console.WriteLine("Try Again.");
-        //             // this runs twice for some strange reason.
-        //         }
+                if (user.Email.Contains(input))
+                {
+                    Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
+                    close = true;
+                }
+                else
+                {
+                    Console.WriteLine("Try Again.");
+                    // this runs twice for some strange reason.
+                }
                 
-        //         }
+                }
 
-        //         break;
+                break;
 
-        //         // If user input == Create an account, ask for user.name and user.email
-        //         case "2":
-        //         // looking to create
-        //         Console.WriteLine("Name:");
-        //         string name = Console.ReadLine();
-        //         Console.WriteLine("Email:");
-        //         string email = Console.ReadLine();
-        //         User newUser = new User {
-        //             Name = name,
-        //             Email = email
-        //         };
-        //         // then add new user to list
-        //         allUsers.Add(newUser);
-        //         Console.WriteLine($"Congrats {name}! You successfully signed up!");
-        //         close = true;
-        //         // also make sure the user's account don't already exist
-        //         break;
+                // If user input == Create an account, ask for user.name and user.email
+                case "2":
+                // looking to create
+                Console.WriteLine("Name:");
+                string name = Console.ReadLine();
+                Console.WriteLine("Email:");
+                string email = Console.ReadLine();
+                User newUser = new User {
+                    Name = name,
+                    Email = email
+                };
+                // then add new user to list
+                allUsers.Add(newUser);
+                Console.WriteLine($"Congrats {name}! You successfully signed up!");
+                close = true;
+                // also make sure the user's account don't already exist
+                break;
                 
-        //         default:
-        //         // else, ask user to "Try again" and loop back to main menu
-        //         Console.WriteLine("Sorry, Try again");
-        //         break;
-        //     }
+                default:
+                // else, ask user to "Try again" and loop back to main menu
+                Console.WriteLine("Sorry, Try again");
+                break;
+            }
             
-        // } while (!close);
-        // // Once the user successfully either creates an account or login, 
-        // // they'll proceed to the main menu
+        } while (!close);
+        // Once the user successfully either creates an account or login, 
+        // they'll proceed to the main menu
 
         do
         {
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("So what would you like to do today?");
-            Console.WriteLine("[1] Find locations");
+            Console.WriteLine("[1] Find locations"); //consider removing line
             Console.WriteLine("[2] Shop locations");
-            Console.WriteLine("[3] View products");
-            Console.WriteLine("[4] View cart");
-            Console.WriteLine("[x] Logout"); //Optional: have text be shown in red
-            // Things to consider:
-            // 1. If you choose to view products, 
-            // 1. If you choose to find locations, the user can set location as store
+            Console.WriteLine("[3] View products"); //consider moving this to "Shop locations"
+            Console.WriteLine("[4] View cart"); //consider moving this to "Shop locations"
+            Console.WriteLine("[x] Logout", Console.ForegroundColor = ConsoleColor.Red); //Optional: have text be shown in red
+
+            Console.ForegroundColor = ConsoleColor.White;
             string input = Console.ReadLine();
 
             switch(input)
@@ -174,6 +174,7 @@ public class MainMenu {
                     }
                 // create an option to return to the main menu
                 break;
+
                 case "2":
                     Console.WriteLine("Select a location:");
                     for(int i = 0; i < allLocations.Count; i++)
@@ -185,6 +186,7 @@ public class MainMenu {
 
                     Console.WriteLine($"Welcome to {selectStoreFront.GetName()}");
                 break;
+
                 case "3":
                     Console.WriteLine("View products");
                 break;
