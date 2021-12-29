@@ -1,5 +1,5 @@
 using Models;
-// using DL;
+using DL;
 using BL;
 
 namespace UI;
@@ -91,6 +91,7 @@ public class MainMenu {
         Console.WriteLine("Let's get started!");
         Console.WriteLine("[1] Login");
         Console.WriteLine("[2] Create Account");
+        Console.WriteLine("[3] Admin Access");
 
         string response = Console.ReadLine();
 
@@ -136,6 +137,11 @@ public class MainMenu {
                 close = true;
                 // also make sure the user's account don't already exist
                 break;
+
+                case "3":
+                close = true;
+                Console.WriteLine("Access Granted");
+                break;
                 
                 default:
                 // else, ask user to "Try again" and loop back to main menu
@@ -152,7 +158,7 @@ public class MainMenu {
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("So what would you like to do today?");
-            Console.WriteLine("[1] Find locations"); //consider removing line
+            Console.WriteLine("[1] Add locations"); //consider removing line
             Console.WriteLine("[2] Shop locations");
             Console.WriteLine("[3] View products"); //consider moving this to "Shop locations"
             Console.WriteLine("[4] View cart"); //consider moving this to "Shop locations"
@@ -164,14 +170,30 @@ public class MainMenu {
             switch(input)
             {
                 case "1":
-                    Console.WriteLine("All locations");
+                    // Console.WriteLine("All locations");
+                    // // code below for displaying each StoreFront location
+                    // foreach(StoreFront storeFrontDetail in allLocations)
+                    // // foreach({c# filename} {empty constructor } in {list name})
+                    // {
+                    //     Console.WriteLine(storeFrontDetail.DisplayStoreFront());
+                    // }
+                    Console.WriteLine("Name:");
+                    string Name = Console.ReadLine();
+                    Console.WriteLine("Address:");
+                    string Address = Console.ReadLine();
+                    Console.WriteLine("City:");
+                    string City = Console.ReadLine();
+                    Console.WriteLine("State:");
+                    string State = Console.ReadLine();
 
-                    // code below for displaying each StoreFront location
-                    foreach(StoreFront storeFrontDetail in allLocations)
-                    // foreach({c# filename} {empty constructor } in {list name})
-                    {
-                        Console.WriteLine(storeFrontDetail.DisplayStoreFront());
-                    }
+                    StoreFront newStoreFront = new StoreFront();
+                    newStoreFront.SetName(Name);
+                    newStoreFront.SetAddress(Address);
+                    newStoreFront.SetCity(City);
+                    newStoreFront.SetState(State);
+                    allLocations.Add(newStoreFront);
+
+                    Console.WriteLine($"You successfully added a new location: {newStoreFront.GetName()}.");
                 // create an option to return to the main menu
                 break;
 
@@ -185,6 +207,7 @@ public class MainMenu {
                     StoreFront selectStoreFront = allLocations[selection];
 
                     Console.WriteLine($"Welcome to {selectStoreFront.GetName()}");
+                    Console.WriteLine("Want would you like to do today?");
                 break;
 
                 case "3":
