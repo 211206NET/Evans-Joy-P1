@@ -191,7 +191,8 @@ public class MainMenu {
                     newStoreFront.SetAddress(Address);
                     newStoreFront.SetCity(City);
                     newStoreFront.SetState(State);
-                    allLocations.Add(newStoreFront);
+                    // allLocations.Add(newStoreFront);
+                    StaticStorage.allStoreFronts.Add(newStoreFront);
 
                     Console.WriteLine($"You successfully added a new location: {newStoreFront.GetName()}.");
                 // create an option to return to the main menu
@@ -199,12 +200,13 @@ public class MainMenu {
 
                 case "2":
                     Console.WriteLine("Select a location:");
-                    for(int i = 0; i < allLocations.Count; i++)
+                    // for(int i = 0; i < allLocations.Count; i++)
+                    for(int i = 0; i < StaticStorage.allStoreFronts.Count; i++)
                     {
-                        Console.WriteLine($" [{i}] name: {allLocations[i].GetName()}: {allLocations[i].GetAddress()}, {allLocations[i].GetCity()}, {allLocations[i].GetState()}");
+                        Console.WriteLine($" [{i}] name: {StaticStorage.allStoreFronts[i].GetName()}: {StaticStorage.allStoreFronts[i].GetAddress()}, {StaticStorage.allStoreFronts[i].GetCity()}, {StaticStorage.allStoreFronts[i].GetState()}");
                     }
                     int selection = int.Parse(Console.ReadLine());
-                    StoreFront selectStoreFront = allLocations[selection];
+                    StoreFront selectStoreFront = StaticStorage.allStoreFronts[selection];
 
                     Console.WriteLine($"Welcome to {selectStoreFront.GetName()}");
                     Console.WriteLine("Want would you like to do today?");

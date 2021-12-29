@@ -8,25 +8,26 @@ namespace DL;
 public static class StaticStorage
 {
 
-    private static List<StoreFront> _allStoreFronts = new List<StoreFront>();
+    // private static List<StoreFront> _allStoreFronts = new List<StoreFront>();
+    public static List<StoreFront> allStoreFronts = new List<StoreFront>();
 
-    /// <summary>
-    /// Returns all storefronts from _allStoreFronts list
-    /// </summary>
-    /// <returns>all storefronts in the list</returns>
-    public static List<StoreFront> GetAllStores()
-    {
-        return StaticStorage._allStoreFronts;
-    }
+    // /// <summary>
+    // /// Returns all storefronts from _allStoreFronts list
+    // /// </summary>
+    // /// <returns>all storefronts in the list</returns>
+    // public static List<StoreFront> GetAllStores()
+    // {
+    //     return StaticStorage.allStoreFronts;
+    // }
 
-    /// <summary>
-    /// add a new storefront to the list
-    /// </summary>
-    /// <param name="storeFront">a new storefront object to add</param>
-    public static void AddStoreFront (StoreFront storeFront)
-    {
-        StaticStorage._allStoreFronts.Add(storeFront);
-    }
+    // /// <summary>
+    // /// add a new storefront to the list
+    // /// </summary>
+    // /// <param name="storeFront">a new storefront object to add</param>
+    // public static void AddStoreFront (StoreFront storeFront)
+    // {
+    //     StaticStorage.allStoreFronts.Add(storeFront);
+    // }
 
 
 }
