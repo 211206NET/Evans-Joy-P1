@@ -79,6 +79,7 @@ public class AdminMenu
 
                 case "x":
                 exit = true;
+                new MainMenu().Start();
                 break;
 
                 default:

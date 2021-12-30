@@ -102,7 +102,7 @@ public class MainMenu {
                         {
                             Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
                             // close = true;
-                            new CustomerMenu().Start();
+                            new StoreFrontMenu().Start();
                         }
                     else
                         {
@@ -128,15 +128,15 @@ public class MainMenu {
 
                 allUsers.Add(newUser);
                 Console.WriteLine($"Congrats {name}! You successfully signed up!");
-                new CustomerMenu().Start();
+                new StoreFrontMenu().Start();
                 break;
 
                 // case 2 works!!!
-                
+
                 case "3":
                 close = true;
                 Console.WriteLine("Access Granted");
-                new StoreFrontMenu().Start();
+                new AdminMenu().Start();
                 break;
 
                 // case 3 works!!!

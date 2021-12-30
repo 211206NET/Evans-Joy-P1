@@ -17,21 +17,17 @@ public class StoreFrontMenu
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("So what would you like to do today?");
-            Console.WriteLine("[1] Admin Menu");
-            Console.WriteLine("[2] Shop locations");
+            Console.WriteLine("[1] Shop locations");
+            Console.WriteLine("[2] View Previous Orders");
+
             Console.WriteLine("[x] Logout", Console.ForegroundColor = ConsoleColor.Red); //Optional: have text be shown in red
 
             Console.ForegroundColor = ConsoleColor.White;
             string? input = Console.ReadLine();
 
             switch(input)
-            {
+            {   
                 case "1":
-                new AdminMenu().Start();
-                break;    
-
-                case "2":
-                new CustomerMenu().Start();
                     List<StoreFront> allStoreFronts = _bl.GetAllStores();
                     Console.WriteLine("Select a location:");
 
@@ -47,6 +43,8 @@ public class StoreFrontMenu
 
                     Console.WriteLine($"Welcome to {selectStoreFront.GetName()}");
                     Console.WriteLine("What would you like to do today?");
+                    
+                    new CustomerMenu().Start();
 
                     }
                     else
@@ -54,6 +52,10 @@ public class StoreFrontMenu
                         Console.WriteLine("There are no stores available :(");
                     }
 
+                break;
+
+                case "2":
+                    Console.WriteLine("View Previous Orders");
                 break;
 
                 case "x":
