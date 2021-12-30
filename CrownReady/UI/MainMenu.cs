@@ -1,5 +1,5 @@
 using Models;
-using DL;
+// using DL;
 using BL;
 
 namespace UI;
@@ -193,14 +193,14 @@ public class MainMenu {
                     newStoreFront.SetState(State);
                     // allLocations.Add(newStoreFront);
                     // StaticStorage.allStoreFronts.Add(newStoreFront);
-                    StaticStorage.AddStoreFront(newStoreFront);
+                    _bl.AddStoreFront(newStoreFront);
 
                     Console.WriteLine($"You successfully added a new location: {newStoreFront.GetName()}.");
                 // create an option to return to the main menu
                 break;
 
                 case "2":
-                    List<StoreFront> allStoreFronts = StaticStorage.GetAllStores();
+                    List<StoreFront> allStoreFronts = _bl.GetAllStores();
                     Console.WriteLine("Select a location:");
 
                     if (allStoreFronts.Count > 0)
@@ -214,7 +214,7 @@ public class MainMenu {
                     StoreFront selectStoreFront = allStoreFronts[selection];
 
                     Console.WriteLine($"Welcome to {selectStoreFront.GetName()}");
-                    Console.WriteLine("Want would you like to do today?");
+                    Console.WriteLine("What would you like to do today?");
 
                     }
                     else

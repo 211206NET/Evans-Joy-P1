@@ -30,7 +30,7 @@ public static class StaticStorage
 
     public static void AddInventory(int storeFrontIndex, Inventory inventoryToAdd)
     {
-        // future code (20211214 @ 10:41).
+        // future code (20211214 @ 10:41)
     }
 
 
