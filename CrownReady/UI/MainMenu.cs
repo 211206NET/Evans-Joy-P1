@@ -72,11 +72,6 @@ public class MainMenu {
         List<User> allUsers = new List<User>();
         allUsers.Add(userOne);
         allUsers.Add(userTwo);
-        
-        // the function below is for greeting the user and asking them to either
-        // login or sign up
-        // User menu = new User();
-        // menu.Greeting();
 
         bool close = false;
 
@@ -91,121 +86,75 @@ public class MainMenu {
         Console.WriteLine("[1] Login");
         Console.WriteLine("[2] Create Account");
         Console.WriteLine("[3] Admin Access");
+        Console.WriteLine("[x] Exit");
 
-        string response = Console.ReadLine();
+        string? response = Console.ReadLine();
 
         switch(response)
             {
-                // If user input == Login, ask for user.email
                 case "1":
                 Console.WriteLine("Email:");
-                string input = Console.ReadLine();
+                string? input = Console.ReadLine();
                 
                 foreach (User user in allUsers)
                 {
-
-                if (user.Email.Contains(input))
-                {
-                    Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
-                    close = true;
-                }
-                else
-                {
-                    Console.WriteLine("Try Again.");
-                    // this runs twice for some strange reason.
-                }
+                    if (user.Email.Contains(input))
+                        {
+                            Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
+                            // close = true;
+                            new CustomerMenu().Start();
+                        }
+                    else
+                        {
+                            Console.WriteLine("Try Again.");
+                        }
                 
                 }
-
                 break;
 
-                // If user input == Create an account, ask for user.name and user.email
+                //case 1 works!!!
+
                 case "2":
-                // looking to create
                 Console.WriteLine("Name:");
-                string name = Console.ReadLine();
+                string? name = Console.ReadLine();
                 Console.WriteLine("Email:");
-                string email = Console.ReadLine();
+                string? email = Console.ReadLine(); 
                 User newUser = new User {
                     Name = name,
                     Email = email
                 };
-                // then add new user to list
+
+                // also make sure the user's account don't already exist
+
                 allUsers.Add(newUser);
                 Console.WriteLine($"Congrats {name}! You successfully signed up!");
-                close = true;
-                // also make sure the user's account don't already exist
+                new CustomerMenu().Start();
                 break;
 
+                // case 2 works!!!
+                
                 case "3":
                 close = true;
                 Console.WriteLine("Access Granted");
+                new StoreFrontMenu().Start();
                 break;
-                
+
+                // case 3 works!!!
+
+                case "x":
+                close = true;
+                break;
+
+                // case x works!!!
+
                 default:
-                // else, ask user to "Try again" and loop back to main menu
                 Console.WriteLine("Sorry, Try again");
                 break;
+
+                //default works!!!
             }
             
         } while (!close);
-        // Once the user successfully either creates an account or login, 
-        // they'll proceed to the main menu
-
-        do
-        {
-
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("So what would you like to do today?");
-            Console.WriteLine("[1] Admin Menu"); //consider removing line
-            Console.WriteLine("[2] Shop locations");
-            Console.WriteLine("[x] Logout", Console.ForegroundColor = ConsoleColor.Red); //Optional: have text be shown in red
-
-            Console.ForegroundColor = ConsoleColor.White;
-            string input = Console.ReadLine();
-
-            switch(input)
-            {
-                case "1":
-                new AdminMenu().Start();
-                break;    
-
-                case "2":
-                new CustomerMenu().Start();
-                    List<StoreFront> allStoreFronts = _bl.GetAllStores();
-                    Console.WriteLine("Select a location:");
-
-                    if (allStoreFronts.Count > 0)
-                    {
-
-                    for(int i = 0; i < allStoreFronts.Count; i++)
-                    {
-                        Console.WriteLine($" [{i}] name: {allStoreFronts[i].GetName()}: {allStoreFronts[i].GetAddress()}, {allStoreFronts[i].GetCity()}, {allStoreFronts[i].GetState()}");
-                    }
-                    int selection = Int32.Parse(Console.ReadLine());
-                    StoreFront selectStoreFront = allStoreFronts[selection];
-
-                    Console.WriteLine($"Welcome to {selectStoreFront.GetName()}");
-                    Console.WriteLine("What would you like to do today?");
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("There are no stores available :(");
-                    }
-
-                break;
-
-                case "x":
-                    exit = true;
-                    Console.WriteLine("Goodbye!");
-                break;
-                
-                default:
-                    Console.WriteLine("Sorry about that but I don't understand");
-                break;
-            }
-        } while(!exit);
 
     }
 
