@@ -159,8 +159,6 @@ public class MainMenu {
             Console.WriteLine("So what would you like to do today?");
             Console.WriteLine("[1] Admin Menu"); //consider removing line
             Console.WriteLine("[2] Shop locations");
-            Console.WriteLine("[3] View products"); //consider moving this to "Shop locations"
-            Console.WriteLine("[4] View cart"); //consider moving this to "Shop locations"
             Console.WriteLine("[x] Logout", Console.ForegroundColor = ConsoleColor.Red); //Optional: have text be shown in red
 
             Console.ForegroundColor = ConsoleColor.White;
@@ -173,6 +171,7 @@ public class MainMenu {
                 break;    
 
                 case "2":
+                new CustomerMenu().Start();
                     List<StoreFront> allStoreFronts = _bl.GetAllStores();
                     Console.WriteLine("Select a location:");
 
@@ -197,16 +196,11 @@ public class MainMenu {
 
                 break;
 
-                case "3":
-                    Console.WriteLine("View products");
-                break;
-                case "4":
-                    Console.WriteLine("View cart");
-                break;
                 case "x":
                     exit = true;
                     Console.WriteLine("Goodbye!");
                 break;
+                
                 default:
                     Console.WriteLine("Sorry about that but I don't understand");
                 break;

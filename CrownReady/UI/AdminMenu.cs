@@ -82,7 +82,7 @@ public class AdminMenu
                 break;
 
                 default:
-                Console.WriteLine("???");
+                Console.WriteLine("Sorry about that but I don't understand");
                 break;
             }
 
