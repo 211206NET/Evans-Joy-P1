@@ -1,5 +1,4 @@
 using Models;
-// using DL;
 using BL;
 
 namespace UI;
@@ -158,7 +157,7 @@ public class MainMenu {
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("So what would you like to do today?");
-            Console.WriteLine("[1] Add locations"); //consider removing line
+            Console.WriteLine("[1] Admin Menu"); //consider removing line
             Console.WriteLine("[2] Shop locations");
             Console.WriteLine("[3] View products"); //consider moving this to "Shop locations"
             Console.WriteLine("[4] View cart"); //consider moving this to "Shop locations"
@@ -170,34 +169,8 @@ public class MainMenu {
             switch(input)
             {
                 case "1":
-                    // Console.WriteLine("All locations");
-                    // // code below for displaying each StoreFront location
-                    // foreach(StoreFront storeFrontDetail in allLocations)
-                    // // foreach({c# filename} {empty constructor } in {list name})
-                    // {
-                    //     Console.WriteLine(storeFrontDetail.DisplayStoreFront());
-                    // }
-                    Console.WriteLine("Name:");
-                    string Name = Console.ReadLine();
-                    Console.WriteLine("Address:");
-                    string Address = Console.ReadLine();
-                    Console.WriteLine("City:");
-                    string City = Console.ReadLine();
-                    Console.WriteLine("State:");
-                    string State = Console.ReadLine();
-
-                    StoreFront newStoreFront = new StoreFront();
-                    newStoreFront.SetName(Name);
-                    newStoreFront.SetAddress(Address);
-                    newStoreFront.SetCity(City);
-                    newStoreFront.SetState(State);
-                    // allLocations.Add(newStoreFront);
-                    // StaticStorage.allStoreFronts.Add(newStoreFront);
-                    _bl.AddStoreFront(newStoreFront);
-
-                    Console.WriteLine($"You successfully added a new location: {newStoreFront.GetName()}.");
-                // create an option to return to the main menu
-                break;
+                new AdminMenu().Start();
+                break;    
 
                 case "2":
                     List<StoreFront> allStoreFronts = _bl.GetAllStores();
