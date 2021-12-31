@@ -25,7 +25,7 @@ public class StoreFrontMenu
             switch(input)
             {   
                 case "1":
-                    List<StoreFront> allStoreFronts = _bl.GetAllStores();
+                    List<StoreFront> allStoreFronts = _bl.GetAllStoreFronts();
                     Console.WriteLine("Select a location:");
 
                     if (allStoreFronts.Count > 0)

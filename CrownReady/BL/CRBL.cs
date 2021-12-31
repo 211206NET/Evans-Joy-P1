@@ -4,13 +4,19 @@ using DL;
 namespace BL;
 public class CRBL
 {
+    private FileRepo _dl;
+
+    public CRBL()
+    {
+        _dl = new FileRepo();
+    }
     /// <summary>
     /// gets all storefronts
     /// </summary>
     /// <returns>list of al storefronts</returns>
-    public List<StoreFront> GetAllStores()
+    public List<StoreFront> GetAllStoreFronts()
     {
-        return StaticStorage.GetAllStores();
+        return _dl.GetAllStoreFronts();
     }
 
     /// <summary>
@@ -19,7 +25,7 @@ public class CRBL
     /// <param name="storeFront">storefront object to add</param>
     public void AddStoreFront (StoreFront storeFront)
     {
-        StaticStorage.AddStoreFront(storeFront);
+        _dl.AddStoreFront(storeFront);
     }
 
     /// <summary>
@@ -30,6 +36,6 @@ public class CRBL
     public void AddInventory(int storeFrontIndex, Inventory inventoryToAdd)
     {
         // future code (20211214 @ 24:10)
-        StaticStorage.AddInventory(storeFrontIndex, inventoryToAdd);
+        _dl.AddInventory(storeFrontIndex, inventoryToAdd);
     }
 }
