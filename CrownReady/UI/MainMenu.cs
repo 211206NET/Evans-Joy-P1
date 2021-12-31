@@ -1,6 +1,3 @@
-global using Models;
-global using BL;
-
 namespace UI;
 
 using System.Collections.Generic; //this is temp storage for models: User, Storefront
