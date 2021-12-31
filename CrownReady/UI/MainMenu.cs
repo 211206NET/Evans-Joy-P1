@@ -1,5 +1,5 @@
-using Models;
-using BL;
+global using Models;
+global using BL;
 
 namespace UI;
 
