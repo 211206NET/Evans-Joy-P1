@@ -25,7 +25,26 @@ public class StoreFrontMenu
             switch(input)
             {   
                 case "1":
-                    List<StoreFront> allStoreFronts = _bl.GetAllStoreFronts();
+                    selectStoreFront();
+                break;
+
+                case "2":
+                    Console.WriteLine("View Previous Orders");
+                break;
+
+                case "x":
+                    Console.WriteLine("Goodbye!");
+                    exit = true;
+                break;
+                
+                default:
+                    Console.WriteLine("Sorry about that but I don't understand");
+                break;
+            }
+        }
+    }
+    private void selectStoreFront(){
+        List<StoreFront> allStoreFronts = _bl.GetAllStoreFronts();
                     Console.WriteLine("Select a location:");
 
                     if (allStoreFronts.Count > 0)
@@ -47,22 +66,5 @@ public class StoreFrontMenu
                     {
                         Console.WriteLine("There are no stores available :(");
                     }
-
-                break;
-
-                case "2":
-                    Console.WriteLine("View Previous Orders");
-                break;
-
-                case "x":
-                    Console.WriteLine("Goodbye!");
-                    exit = true;
-                break;
-                
-                default:
-                    Console.WriteLine("Sorry about that but I don't understand");
-                break;
-            }
-        }
     }
 }
