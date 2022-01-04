@@ -15,8 +15,8 @@ public class FileRepo
     {
         // returns all storefronts in file.
         string jsonString = File.ReadAllText(filePath);
-        
-        Console.WriteLine(jsonString);
+
+        // Console.WriteLine(jsonString);
         return JsonSerializer.Deserialize<List<StoreFront>>(jsonString);
     }
     /// <summary>

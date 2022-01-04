@@ -13,7 +13,6 @@ public class CustomerMenu
         bool exit = false;
         while(!exit)
         {
-            Console.WriteLine("Welcome to [Selected StoreFront]!");
             Console.WriteLine("Please make a selection of what you would like to do today.");
             Console.WriteLine("[1] View Products");
             Console.WriteLine("[2] View cart");

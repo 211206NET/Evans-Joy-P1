@@ -34,13 +34,11 @@ public class StoreFrontMenu
                     for(int i = 0; i < allStoreFronts.Count; i++)
                     {
                         Console.WriteLine($" [{i}] Name: {allStoreFronts[i].Name}: {allStoreFronts[i].Address}, {allStoreFronts[i].City}, {allStoreFronts[i].State}");
-                        // Console.WriteLine($" [{i}] name: {allStoreFronts[i].GetName()}: {allStoreFronts[i].GetAddress()}, {allStoreFronts[i].GetCity()}, {allStoreFronts[i].GetState()}");
                     }
                     int selection = Int32.Parse(Console.ReadLine());
                     StoreFront selectStoreFront = allStoreFronts[selection];
 
                     Console.WriteLine($"Welcome to {selectStoreFront.Name}");
-                    Console.WriteLine("What would you like to do today?");
                     
                     new CustomerMenu().Start();
 
