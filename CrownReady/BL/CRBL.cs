@@ -1,7 +1,4 @@
-﻿using Models;
-using DL;
-
-namespace BL;
+﻿namespace BL;
 public class CRBL
 {
     private FileRepo _dl;
