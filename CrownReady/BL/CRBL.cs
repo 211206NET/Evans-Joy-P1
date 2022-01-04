@@ -23,9 +23,9 @@ public class CRBL
     /// adds new storefront to the list
     /// </summary>
     /// <param name="storeFront">storefront object to add</param>
-    public void AddStoreFront (StoreFront storeFront)
+    public void AddStoreFront (StoreFront storeFrontToAdd)
     {
-        _dl.AddStoreFront(storeFront);
+        _dl.AddStoreFront(storeFrontToAdd);
     }
 
     /// <summary>

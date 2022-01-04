@@ -14,7 +14,7 @@ public static class StaticStorage
     /// Returns all storefronts from _allStoreFronts list
     /// </summary>
     /// <returns>all storefronts in the list</returns>
-    public static List<StoreFront> GetAllStores()
+    public static List<StoreFront> GetStoreFronts()
     {
         return StaticStorage._allStoreFronts;
     }

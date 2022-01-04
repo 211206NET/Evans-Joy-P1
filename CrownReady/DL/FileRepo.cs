@@ -5,7 +5,7 @@ public class FileRepo
 {
     public FileRepo()
     {}
-    private string filePath = "../DL/Storefronts.json";
+    private string filePath = "../DL/StoreFronts.json";
 
     /// <summary>
     /// Returns all storefronts written in file
@@ -15,6 +15,8 @@ public class FileRepo
     {
         // returns all storefronts in file.
         string jsonString = File.ReadAllText(filePath);
+        
+        Console.WriteLine(jsonString);
         return JsonSerializer.Deserialize<List<StoreFront>>(jsonString);
     }
     /// <summary>
