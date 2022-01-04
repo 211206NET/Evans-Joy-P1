@@ -25,7 +25,33 @@ public class AdminMenu
             switch(input)
             {
                 case "1":
-                    List<StoreFront> getAllStoreFronts = _bl.GetAllStoreFronts();
+                    viewAllStoreFronts();
+                break;
+
+                case "2":
+                    addNewStoreFront();
+                break;
+
+                case "3":
+                Console.WriteLine("Inventory");
+                break;
+
+                case "x":
+                exit = true;
+                new MainMenu().Start();
+                break;
+
+                default:
+                Console.WriteLine("Sorry about that but I don't understand");
+                break;
+            }
+
+        }
+
+
+    }
+    private void viewAllStoreFronts(){
+            List<StoreFront> getAllStoreFronts = _bl.GetAllStoreFronts();
                         Console.WriteLine("Select a location:");
 
                         if (getAllStoreFronts.Count > 0)
@@ -50,10 +76,10 @@ public class AdminMenu
                         {
                             Console.WriteLine("There are no stores available :(");
                         }
-                break;
+        }
 
-                case "2":
-                    Console.WriteLine("Name:");
+    private void addNewStoreFront(){
+        Console.WriteLine("Name:");
                         string? Name = Console.ReadLine();
                         Console.WriteLine("Address:");
                         string? Address = Console.ReadLine();
@@ -72,24 +98,5 @@ public class AdminMenu
 
                         Console.WriteLine($"You successfully added a new location: {newStoreFront.Name}.");
                     // create an option to return to the main menu
-                break;
-
-                case "3":
-                Console.WriteLine("Inventory");
-                break;
-
-                case "x":
-                exit = true;
-                new MainMenu().Start();
-                break;
-
-                default:
-                Console.WriteLine("Sorry about that but I don't understand");
-                break;
-            }
-
-        }
-
-
     }
 }
