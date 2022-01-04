@@ -25,7 +25,11 @@ public class FileRepo
     /// <param name="storeFrontToAdd">storefront object to be added</param>
     public void AddStoreFront(StoreFront storeFrontToAdd)
     {
-        
+        List<StoreFront> allStoreFronts = GetAllStoreFronts();
+        allStoreFronts.Add(storeFrontToAdd);
+
+        string jsonString = JsonSerializer.Serialize(allStoreFronts);
+        File.WriteAllText(filePath, jsonString);
     }
     /// <summary>
     /// Adds inventory to storefront object and then writes to file
