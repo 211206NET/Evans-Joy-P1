@@ -69,7 +69,7 @@ public class AdminMenu : IMenu
                     {
                         Console.WriteLine($" [{i}] {getAllStoreFronts[i].DisplayStoreFront()}");
                     }
-                    int selection = Int32.Parse(Console.ReadLine());
+                    int selection = Int32.Parse(Console.ReadLine()?? "");
                     StoreFront selectStoreFront = getAllStoreFronts[selection];
 
                     Console.WriteLine($"Welcome to {selectStoreFront.Name}");
@@ -92,10 +92,10 @@ public class AdminMenu : IMenu
         string? State = Console.ReadLine();
 
         StoreFront newStoreFront = new StoreFront();
-        newStoreFront.Name = Name;
-        newStoreFront.Address = Address;
-        newStoreFront.City = City;
-        newStoreFront.State = State;
+        newStoreFront.Name = Name ?? "";
+        newStoreFront.Address = Address ?? "";
+        newStoreFront.City = City ?? "";
+        newStoreFront.State = State ?? "";
 
         _bl.AddStoreFront(newStoreFront);
 

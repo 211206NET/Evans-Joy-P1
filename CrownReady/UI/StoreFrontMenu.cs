@@ -54,7 +54,7 @@ public class StoreFrontMenu
             {
                 Console.WriteLine($" [{i}] {allStoreFronts[i].DisplayStoreFront()}");
             }
-            int selection = Int32.Parse(Console.ReadLine());
+            int selection = Int32.Parse(Console.ReadLine() ?? "");
             StoreFront selectStoreFront = allStoreFronts[selection];
 
             Console.WriteLine($"Welcome to {selectStoreFront.Name}");

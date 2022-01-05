@@ -21,7 +21,6 @@ public class MainMenu : IMenu {
 
         Console.Out.NewLine = "\r\n\r\n"; //For more info check out link: https://www.sitereq.com/post/6-ways-to-insert-new-line-in-c-and-aspnet
         Console.ForegroundColor = ConsoleColor.Cyan;
-        bool exit = false;
 
         // Testing for various users:
         User userOne = new User();
@@ -82,8 +81,8 @@ public class MainMenu : IMenu {
                 Console.WriteLine("Email:");
                 string? email = Console.ReadLine(); 
                 User newUser = new User {
-                    Name = name,
-                    Email = email
+                    Name = name ?? "",
+                    Email = email ?? ""
                 };
 
                 // also make sure the user's account don't already exist
