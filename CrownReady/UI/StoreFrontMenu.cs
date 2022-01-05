@@ -54,7 +54,7 @@ public class StoreFrontMenu
 
                     for(int i = 0; i < allStoreFronts.Count; i++)
                     {
-                        Console.WriteLine($" [{i}] Name: {allStoreFronts[i].Name}: {allStoreFronts[i].Address}, {allStoreFronts[i].City}, {allStoreFronts[i].State}");
+                        Console.WriteLine($" [{i}] {allStoreFronts[i].DisplayStoreFront()}");
                     }
                     int selection = Int32.Parse(Console.ReadLine());
                     StoreFront selectStoreFront = allStoreFronts[selection];
