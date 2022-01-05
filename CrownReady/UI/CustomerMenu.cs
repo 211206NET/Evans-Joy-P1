@@ -2,7 +2,7 @@ using DL;
 
 namespace UI;
 
-public class CustomerMenu
+public class CustomerMenu : IMenu
 {
     private CRBL _bl;
 

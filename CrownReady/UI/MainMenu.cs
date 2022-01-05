@@ -60,7 +60,8 @@ public class MainMenu : IMenu {
                 
                 foreach (User user in allUsers)
                 {
-                    if (user.Email.Contains(input))
+                    if (user.Email == input)
+                    // if (user.Email.Contains(input))
                         {
                             Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
                             new StoreFrontMenu().Start();

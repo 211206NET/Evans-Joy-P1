@@ -1,7 +1,7 @@
 using DL;
 namespace UI;
 
-public class StoreFrontMenu
+public class StoreFrontMenu : IMenu
 {
     private CRBL _bl;
     public StoreFrontMenu()
