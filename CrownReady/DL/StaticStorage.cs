@@ -1,6 +1,4 @@
-﻿using Models;
-
-namespace DL;
+﻿namespace DL;
 
 // A static class in C# is a class that cannot be instantiated.
 // A static class can only contain static data members including static methods, static constructors, and static properties.

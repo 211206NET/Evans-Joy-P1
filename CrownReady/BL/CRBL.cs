@@ -1,8 +1,7 @@
 ﻿namespace BL;
-public class CRBL
+public class CRBL : IBL
 {
     private IRepo _dl;
-    // private FileRepo _dl;
 
     public CRBL(IRepo repo)
     {

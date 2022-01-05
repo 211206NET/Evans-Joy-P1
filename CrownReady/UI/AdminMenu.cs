@@ -2,7 +2,7 @@ using DL;
 
 namespace UI;
 
-public class AdminMenu
+public class AdminMenu : IMenu
 {
     private CRBL _bl;
 
@@ -41,7 +41,14 @@ public class AdminMenu
 
                 case "x":
                 exit = true;
-                new MainMenu().Start();
+
+                FileRepo repo = new FileRepo();
+                CRBL bl = new CRBL(repo);
+                // instantiate MainMenu
+                MainMenu menu = new MainMenu(bl);
+                // then call the Start method
+                menu.Start();
+                
                 break;
 
                 default:

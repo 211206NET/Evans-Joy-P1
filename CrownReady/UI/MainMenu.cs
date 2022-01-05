@@ -5,13 +5,14 @@ namespace UI;
 using System.Collections.Generic; //this is temp storage for models: User, Storefront
 
 // create a public class called 'MainMenu'
-public class MainMenu {
+public class MainMenu : IMenu {
 
-    private CRBL _bl;
+    private IBL _bl;
 
-    public MainMenu()
+    public MainMenu(IBL bl)
     {
-        _bl = new CRBL(new FileRepo());
+        _bl = bl;
+        // _bl = new CRBL(new FileRepo());
         // _bl = new CRBL();
     }
 
