@@ -90,11 +90,30 @@ INSERT INTO Product (Name, Description, Price) VALUES
 Palmer''s Coconut Oil Formula products contain ethically and sustainably sourced Coconut Oil and Tahitian Monoi, infused with Tiare flower petals. These raw, natural ingredients deeply hydrate, repair damage and give hair incredible shine.',
  5.68);
 
-SELECT * FROM Product;
-
 ALTER TABLE Product
 ALTER COLUMN Price DECIMAL(10,2);
 
 UPDATE Product
 SET Price = 5.68
 WHERE ID = 2;
+
+INSERT INTO Product (Name, Description, Price) VALUES
+('OGX Hydrating + Tea Tree Mint Shampoo, Nourishing & Invigorating Scalp Shampoo with Tea Tree & Peppermint Oil & Milk Proteins, Paraben-Free, Sulfate-Free Surfactants, 13 fl. oz', 
+'Hydrate with a burst of freshness with this tea tree mint scalp shampoo. Blended with peppermint & tea tree oil, the moisturizing shampoo invigorates the senses with a refreshing tingle on the scalp.',
+ 5.74);
+
+INSERT INTO Product (Name, Description, Price) VALUES
+('Palmer''s Coconut Oil Formula Curl Styler Cream Pudding 14 oz.', 
+'Palmer''s Coconut Oil Formula products contain ethically and sustainably sourced Coconut Oil and Tahitian Monoï, infused with Tiaré flower petals. These raw, natural ingredients deeply hydrate, repair damage and give hair incredible shine. 
+Palmer''s Coconut Oil Formula Coconut Oil Curl Styler Cream Pudding instantly boosts hydration and adds shine transforming dry, frizzy hair into bouncy, defined curls. Maximizes curl length for longer lasting styles.',
+ 11.07);
+
+INSERT INTO Product (Name, Description, Price) VALUES
+('Cantu Shea Butter Coconut Curling Cream for Natural Hair, 12 oz', 
+'Get damaged hair under control with Cantu Shea Butter for Natural Hair Coconut Curling Cream. Made without harsh ingredients, Cantu for Natural Hair restores your real, authentic beauty, bringing out the best curly, kinky, or wavy hair. This richly-hydrating solution for dry hair and damaged hair defines, conditions and adds manageability without any harsh ingredients that can cause more damage. The nourishing formula is 100 percent pure shea butter and real coconut to smooth, soften and hydrate parched, frizzy hair and contains no mineral oil, sulfates, parabens, silicone, phthalates, gluten, paraffin, propylene glycol, PABA or DEA. Its rich, natural scent makes every use more enjoyable. Cantu hair care products are also not tested on animals. 
+It''s available in a convenient two pack or as a single container; each jar contains 12 oz.',
+ 5.87);
+
+SELECT * FROM Product;
+
+INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup)
