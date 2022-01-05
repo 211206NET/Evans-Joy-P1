@@ -13,11 +13,21 @@ public class FileRepo : IRepo
     /// <returns>List of all storefronts</returns>
     public List<StoreFront> GetAllStoreFronts()
     {
-        // returns all storefronts in file.
-        string jsonString = File.ReadAllText(filePath);
-
-        // Console.WriteLine(jsonString);
-        return JsonSerializer.Deserialize<List<StoreFront>>(jsonString);
+        string jsonString = "";
+        try
+        {
+            jsonString = File.ReadAllText(filePath);
+        }
+        catch(FileNotFoundException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        
+        return JsonSerializer.Deserialize<List<StoreFront>>(jsonString) ?? new List<StoreFront>();
     }
     /// <summary>
     /// Adds storefront to list and then writes it to file
