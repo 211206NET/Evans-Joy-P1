@@ -1,3 +1,5 @@
+using DL;
+
 namespace UI;
 
 public class AdminMenu
@@ -6,7 +8,8 @@ public class AdminMenu
 
     public AdminMenu()
     {
-        _bl = new CRBL();
+        _bl = new CRBL(new FileRepo());
+        // _bl = new CRBL();
     }
     public void Start()
     {

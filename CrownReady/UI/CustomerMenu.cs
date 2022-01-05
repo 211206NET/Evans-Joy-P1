@@ -1,3 +1,5 @@
+using DL;
+
 namespace UI;
 
 public class CustomerMenu
@@ -6,7 +8,8 @@ public class CustomerMenu
 
     public CustomerMenu()
     {
-        _bl = new CRBL();
+        _bl = new CRBL(new FileRepo());
+        // _bl = new CRBL();
     }
     public void Start()
     {

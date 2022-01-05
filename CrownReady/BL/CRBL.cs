@@ -1,11 +1,12 @@
 ﻿namespace BL;
 public class CRBL
 {
-    private FileRepo _dl;
+    private IRepo _dl;
+    // private FileRepo _dl;
 
-    public CRBL()
+    public CRBL(IRepo repo)
     {
-        _dl = new FileRepo();
+        _dl = repo;
     }
     /// <summary>
     /// gets all storefronts

@@ -1,7 +1,7 @@
 using System.Text.Json;
 namespace DL;
 
-public class FileRepo
+public class FileRepo : IRepo
 {
     public FileRepo()
     {}

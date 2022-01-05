@@ -1,3 +1,5 @@
+using DL;
+
 namespace UI;
 
 using System.Collections.Generic; //this is temp storage for models: User, Storefront
@@ -9,7 +11,8 @@ public class MainMenu {
 
     public MainMenu()
     {
-        _bl = new CRBL();
+        _bl = new CRBL(new FileRepo());
+        // _bl = new CRBL();
     }
 
 

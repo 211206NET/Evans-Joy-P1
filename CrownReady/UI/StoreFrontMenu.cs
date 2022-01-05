@@ -1,3 +1,4 @@
+using DL;
 namespace UI;
 
 public class StoreFrontMenu
@@ -5,7 +6,8 @@ public class StoreFrontMenu
     private CRBL _bl;
     public StoreFrontMenu()
     {
-        _bl = new CRBL();
+        _bl = new CRBL(new FileRepo());
+        // _bl = new CRBL();
     }
     public void Start()
     {
