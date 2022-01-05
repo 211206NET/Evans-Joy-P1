@@ -20,8 +20,9 @@ public class CustomerMenu
             Console.WriteLine("[1] View Products");
             Console.WriteLine("[2] View cart");
             Console.WriteLine("[3] View Order");
-            Console.WriteLine("[x] Go back to Main Menu");
-
+            Console.WriteLine("[x] Go back to Main Menu", Console.ForegroundColor = ConsoleColor.Red);
+            
+            Console.ForegroundColor = ConsoleColor.White;
             string? input = Console.ReadLine(); 
 
             switch(input)

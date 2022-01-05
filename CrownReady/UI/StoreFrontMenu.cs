@@ -7,7 +7,6 @@ public class StoreFrontMenu
     public StoreFrontMenu()
     {
         _bl = new CRBL(new FileRepo());
-        // _bl = new CRBL();
     }
     public void Start()
     {
@@ -47,26 +46,24 @@ public class StoreFrontMenu
     }
     private void selectStoreFront(){
         List<StoreFront> allStoreFronts = _bl.GetAllStoreFronts();
-                    Console.WriteLine("Select a location:");
+        Console.WriteLine("Select a location:");
 
-                    if (allStoreFronts.Count > 0)
-                    {
+        if (allStoreFronts.Count > 0)
+        {
+            for(int i = 0; i < allStoreFronts.Count; i++)
+            {
+                Console.WriteLine($" [{i}] {allStoreFronts[i].DisplayStoreFront()}");
+            }
+            int selection = Int32.Parse(Console.ReadLine());
+            StoreFront selectStoreFront = allStoreFronts[selection];
 
-                    for(int i = 0; i < allStoreFronts.Count; i++)
-                    {
-                        Console.WriteLine($" [{i}] {allStoreFronts[i].DisplayStoreFront()}");
-                    }
-                    int selection = Int32.Parse(Console.ReadLine());
-                    StoreFront selectStoreFront = allStoreFronts[selection];
-
-                    Console.WriteLine($"Welcome to {selectStoreFront.Name}");
-                    
-                    new CustomerMenu().Start();
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("There are no stores available :(");
-                    }
+            Console.WriteLine($"Welcome to {selectStoreFront.Name}");
+            
+            new CustomerMenu().Start();
+        }
+        else
+        {
+            Console.WriteLine("There are no stores available :(");
+        }
     }
 }

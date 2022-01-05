@@ -12,8 +12,6 @@ public class MainMenu : IMenu {
     public MainMenu(IBL bl)
     {
         _bl = bl;
-        // _bl = new CRBL(new FileRepo());
-        // _bl = new CRBL();
     }
 
 
@@ -50,8 +48,9 @@ public class MainMenu : IMenu {
         Console.WriteLine("[1] Login");
         Console.WriteLine("[2] Create Account");
         Console.WriteLine("[3] Admin Access");
-        Console.WriteLine("[x] Exit");
-
+        Console.WriteLine("[x] Exit", Console.ForegroundColor = ConsoleColor.Red);
+        
+        Console.ForegroundColor = ConsoleColor.White;
         string? response = Console.ReadLine();
 
         switch(response)
@@ -65,7 +64,6 @@ public class MainMenu : IMenu {
                     if (user.Email.Contains(input))
                         {
                             Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
-                            // close = true;
                             new StoreFrontMenu().Start();
                         }
                     else
