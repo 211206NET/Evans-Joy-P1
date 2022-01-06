@@ -1,3 +1,5 @@
+// using CustomExceptions;
+
 namespace Models;
 
 // create a new public class for users

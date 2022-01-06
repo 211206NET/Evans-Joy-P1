@@ -1,3 +1,4 @@
+using CustomExceptions;
 using DL;
 
 namespace UI;
@@ -82,6 +83,8 @@ public class AdminMenu : IMenu
         }
 
     private void addNewStoreFront(){
+        createStoreFront:
+        Console.WriteLine("Create new location:");
         Console.WriteLine("Name:");
         string? Name = Console.ReadLine();
         Console.WriteLine("Address:");
@@ -91,15 +94,26 @@ public class AdminMenu : IMenu
         Console.WriteLine("State:");
         string? State = Console.ReadLine();
 
+        try
+        {
+
         StoreFront newStoreFront = new StoreFront();
         newStoreFront.Name = Name ?? "";
         newStoreFront.Address = Address ?? "";
         newStoreFront.City = City ?? "";
         newStoreFront.State = State ?? "";
-
+        
         _bl.AddStoreFront(newStoreFront);
 
         Console.WriteLine($"You successfully added a new location: {newStoreFront.Name}.");
         // create an option to return to the main menu
+        }
+        catch(InputInvalidException ex)
+        {
+            Console.WriteLine(ex.Message);
+            goto createStoreFront;
+        }
+
+
     }
 }

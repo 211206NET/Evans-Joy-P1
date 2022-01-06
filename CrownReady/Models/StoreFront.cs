@@ -1,16 +1,35 @@
-// namespace StoreFront;
+using CustomExceptions;
+using System.Text.RegularExpressions;
 
-// changing to 'namespace Models' to make things consistant
 namespace Models;
 public class StoreFront{
     public StoreFront() {}
-    public string Name { get; set; }
+    // public string Name { get; set; }
+    public string Name { 
+        get => _name;
+        set
+        {
+            Regex pattern = new Regex("^[a-zA-Z0-9 !?']+$");
+            if(string.IsNullOrWhiteSpace(value))
+            {
+                throw new InputInvalidException("Name can't be empty");
+            }
+            else if(!pattern.IsMatch(value))
+            {
+                throw new InputInvalidException("Storefront name can only have alphanumeric characters, white space, !, ?, and '.");
+            }
+            else
+            {
+                this._name = value;
+            }
+        }
+    }
     public string Address { get; set; }
     public string City { get; set; }
     public string State { get; set; }
 
     // things to consider: whether or not it should be changed to private instead of public
-    // private string _name;
+    private string _name;
     // public string GetName() {
     //     return this._name;
     // }
