@@ -1,15 +1,13 @@
 using CustomExceptions;
 using DL;
-
 namespace UI;
 
 public class AdminMenu : IMenu
 {
-    private CRBL _bl;
-
-    public AdminMenu()
+    private IBL _bl;
+    public AdminMenu(IBL bl)
     {
-        _bl = new CRBL(new FileRepo());
+        _bl = bl;
     }
     public void Start()
     {
@@ -63,23 +61,23 @@ public class AdminMenu : IMenu
     }
     private void viewAllStoreFronts(){
             List<StoreFront> getAllStoreFronts = _bl.GetAllStoreFronts();
-            Console.WriteLine("Select a location:");
-                if (getAllStoreFronts.Count > 0)
-                {
-                    for(int i = 0; i < getAllStoreFronts.Count; i++)
-                    {
-                        Console.WriteLine($" [{i}] {getAllStoreFronts[i].DisplayStoreFront()}");
-                    }
-                    int selection = Int32.Parse(Console.ReadLine()?? "");
-                    StoreFront selectStoreFront = getAllStoreFronts[selection];
+            // Console.WriteLine("Select a location:");
+            //     if (getAllStoreFronts.Count > 0)
+            //     {
+            //         for(int i = 0; i < getAllStoreFronts.Count; i++)
+            //         {
+            //             Console.WriteLine($" [{i}] {getAllStoreFronts[i].DisplayStoreFront()}");
+            //         }
+            //         int selection = Int32.Parse(Console.ReadLine()?? "");
+            //         StoreFront selectStoreFront = getAllStoreFronts[selection];
 
-                    Console.WriteLine($"Welcome to {selectStoreFront.Name}");
-                    Console.WriteLine("What would you like to do today?");
-                }
-                else
-                {
-                    Console.WriteLine("There are no stores available :(");
-                }
+            //         Console.WriteLine($"Welcome to {selectStoreFront.Name}");
+            //         Console.WriteLine("What would you like to do today?");
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("There are no stores available :(");
+            //     }
         }
 
     private void addNewStoreFront(){

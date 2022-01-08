@@ -3,10 +3,10 @@ namespace UI;
 
 public class StoreFrontMenu : IMenu
 {
-    private CRBL _bl;
-    public StoreFrontMenu()
+    private IBL _bl;
+    public StoreFrontMenu(IBL bl)
     {
-        _bl = new CRBL(new FileRepo());
+        _bl = bl;
     }
     public void Start()
     {
@@ -26,7 +26,7 @@ public class StoreFrontMenu : IMenu
             switch(input)
             {   
                 case "1":
-                    selectStoreFront();
+                    viewAllStoreFronts();
                 break;
 
                 case "2":
@@ -44,21 +44,19 @@ public class StoreFrontMenu : IMenu
             }
         }
     }
-    private void selectStoreFront(){
-        List<StoreFront> allStoreFronts = _bl.GetAllStoreFronts();
+    private void viewAllStoreFronts(){
+        List<StoreFront> getAllStoreFronts = _bl.GetAllStoreFronts();
         Console.WriteLine("Select a location:");
-
-        if (allStoreFronts.Count > 0)
+        if (getAllStoreFronts.Count > 0)
         {
-            for(int i = 0; i < allStoreFronts.Count; i++)
+            for(int i = 0; i < getAllStoreFronts.Count; i++)
             {
-                Console.WriteLine($" [{i}] {allStoreFronts[i].DisplayStoreFront()}");
+                Console.WriteLine($" [{i}] {getAllStoreFronts[i].DisplayStoreFront()}");
             }
             int selection = Int32.Parse(Console.ReadLine() ?? "");
-            StoreFront selectStoreFront = allStoreFronts[selection];
+            StoreFront selectStoreFront = getAllStoreFronts[selection];
 
             Console.WriteLine($"Welcome to {selectStoreFront.Name}");
-            
             new CustomerMenu().Start();
         }
         else

@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 namespace Models;
 public class StoreFront{
     public StoreFront() {}
+    public int ID { get; set; }
     public string Name { get; set; }
     // public string Name { 
     //     get => _name;
@@ -72,6 +73,11 @@ public class StoreFront{
 
     public string DisplayStoreFront()
     {
-        return $"Name: {this.Name} Address: {this.Address}, {this.City}, {this.State}";
+        return $"ID: {this.ID} Name: {this.Name} Address: {this.Address}, {this.City}, {this.State}";
+    }
+
+    public override string ToString()
+    {
+        return $"Id: {this.ID} \nName: {this.Name} \nCity: {this.City} \nState: {this.State}";
     }
 }

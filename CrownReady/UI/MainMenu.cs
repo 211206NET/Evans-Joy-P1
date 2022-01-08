@@ -2,9 +2,8 @@ using DL;
 
 namespace UI;
 
-using System.Collections.Generic; //this is temp storage for models: User, Storefront
+using System.Collections.Generic; //this is temp storage for models: User
 
-// create a public class called 'MainMenu'
 public class MainMenu : IMenu {
 
     private IBL _bl;
@@ -14,10 +13,12 @@ public class MainMenu : IMenu {
         _bl = bl;
     }
 
-
-
-    // create method inside class to hold code from Program.cs file
     public void Start() {
+
+        string connectionString = File.ReadAllText("connectionString.txt");
+        IRepo repo = new DBRepo();
+
+        IBL bl = new CRBL(repo);
 
         Console.Out.NewLine = "\r\n\r\n"; //For more info check out link: https://www.sitereq.com/post/6-ways-to-insert-new-line-in-c-and-aspnet
         Console.ForegroundColor = ConsoleColor.Cyan;
@@ -64,7 +65,7 @@ public class MainMenu : IMenu {
                     // if (user.Email.Contains(input))
                         {
                             Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
-                            new StoreFrontMenu().Start();
+                            new StoreFrontMenu(bl).Start();
                         }
                     else
                         {
@@ -90,7 +91,7 @@ public class MainMenu : IMenu {
 
                 allUsers.Add(newUser);
                 Console.WriteLine($"Congrats {name}! You successfully signed up!");
-                new StoreFrontMenu().Start();
+                new StoreFrontMenu(bl).Start();
                 break;
 
                 // case 2 works!!!
@@ -98,7 +99,8 @@ public class MainMenu : IMenu {
                 case "3":
                 close = true;
                 Console.WriteLine("Access Granted");
-                new AdminMenu().Start();
+                new AdminMenu(bl).Start();
+                // new AdminMenu(_bl).Start(); //this renders written file.
                 break;
 
                 // case 3 works!!!
