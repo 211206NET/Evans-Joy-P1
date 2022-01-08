@@ -116,4 +116,6 @@ It''s available in a convenient two pack or as a single container; each jar cont
 
 SELECT * FROM Product;
 
-INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup)
+INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup) VALUES (1, 2, 10, .50);
+
+SELECT * FROM Inventory;
