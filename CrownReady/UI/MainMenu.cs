@@ -35,6 +35,7 @@ public class MainMenu : IMenu {
         allUsers.Add(userOne);
         allUsers.Add(userTwo);
 
+
         bool close = false;
 
         do
@@ -42,7 +43,7 @@ public class MainMenu : IMenu {
 
         // Optional: Strongly considering having 'readline' be a standout color from 'writeline'
         Console.WriteLine("Hello, Welcome to CrownReady Beauty Supply!");
-        Console.WriteLine("The place where you find ... no matter your skin type or hair texture");
+        Console.WriteLine("The place where you find the right product no matter your skin type or hair texture!");
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Let's get started!");
         Console.WriteLine("[1] Login");
@@ -56,13 +57,14 @@ public class MainMenu : IMenu {
         switch(response)
             {
                 case "1":
+                List<User> getUsers = bl.GetAllUsers();
+
                 Console.WriteLine("Email:");
                 string? input = Console.ReadLine();
                 
-                foreach (User user in allUsers)
+                foreach (User user in getUsers)
                 {
                     if (user.Email == input)
-                    // if (user.Email.Contains(input))
                         {
                             Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
                             new StoreFrontMenu(bl).Start();
@@ -75,9 +77,8 @@ public class MainMenu : IMenu {
                 }
                 break;
 
-                //case 1 works!!!
-
                 case "2":
+                
                 Console.WriteLine("Name:");
                 string? name = Console.ReadLine();
                 Console.WriteLine("Email:");
@@ -87,11 +88,17 @@ public class MainMenu : IMenu {
                     Email = email ?? ""
                 };
 
+                bl.AddUser(newUser);
+
+                // List<User> getAllUsers = bl.GetAllUsers();
                 // also make sure the user's account don't already exist
 
-                allUsers.Add(newUser);
-                Console.WriteLine($"Congrats {name}! You successfully signed up!");
+                // getAllUsers.Add(newUser);
+                // allUsers.Add(newUser);
+                Console.WriteLine($"Congrats {newUser.Name}! You successfully signed up!");
+                // Console.WriteLine($"Congrats {name}! You successfully signed up!");
                 new StoreFrontMenu(bl).Start();
+
                 break;
 
                 // case 2 works!!!
@@ -119,7 +126,5 @@ public class MainMenu : IMenu {
             }
             
         } while (!close);
-
     }
-
 }
