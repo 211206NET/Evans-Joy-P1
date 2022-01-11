@@ -8,8 +8,10 @@ public class User{
     public User() {}
 
     // setting automatic properties: name, email
+    public int ID { get; set;}
     public string Name { get; set;}
     public string Email { get; set;}
+    public bool IsEmployee { get; set;}
 
     public string SignUp(string name, string email){
         this.Name = name; 

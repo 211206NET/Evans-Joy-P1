@@ -23,17 +23,17 @@ public class MainMenu : IMenu {
         Console.Out.NewLine = "\r\n\r\n"; //For more info check out link: https://www.sitereq.com/post/6-ways-to-insert-new-line-in-c-and-aspnet
         Console.ForegroundColor = ConsoleColor.Cyan;
 
-        // Testing for various users:
-        User userOne = new User();
-        userOne.Name = "Joy";
-        userOne.Email = "joy@email.com";
-        User userTwo = new User();
-        userTwo.Name = "Test";
-        userTwo.Email = "test@email.com";
+        // // Testing for various users:
+        // User userOne = new User();
+        // userOne.Name = "Joy";
+        // userOne.Email = "joy@email.com";
+        // User userTwo = new User();
+        // userTwo.Name = "Test";
+        // userTwo.Email = "test@email.com";
 
-        List<User> allUsers = new List<User>();
-        allUsers.Add(userOne);
-        allUsers.Add(userTwo);
+        // List<User> allUsers = new List<User>();
+        // allUsers.Add(userOne);
+        // allUsers.Add(userTwo);
 
 
         bool close = false;
@@ -62,14 +62,14 @@ public class MainMenu : IMenu {
                 Console.WriteLine("Email:");
                 string? input = Console.ReadLine();
                 
-                foreach (User user in getUsers)
+                foreach (User user in getUsers) 
                 {
-                    if (user.Email == input)
+                    if (user.Email == input && user.IsEmployee.Equals(false))
                         {
                             Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
                             new StoreFrontMenu(bl).Start();
                         }
-                    else
+                    else //fix issue
                         {
                             Console.WriteLine("Try Again.");
                         }
@@ -85,7 +85,8 @@ public class MainMenu : IMenu {
                 string? email = Console.ReadLine(); 
                 User newUser = new User {
                     Name = name ?? "",
-                    Email = email ?? ""
+                    Email = email ?? "",
+                    IsEmployee = false
                 };
 
                 bl.AddUser(newUser);
@@ -104,10 +105,26 @@ public class MainMenu : IMenu {
                 // case 2 works!!!
 
                 case "3":
-                close = true;
-                Console.WriteLine("Access Granted");
-                new AdminMenu(bl).Start();
-                // new AdminMenu(_bl).Start(); //this renders written file.
+
+                List<User> getAdmin = bl.GetAllUsers();
+
+                Console.WriteLine("Email:");
+                string? input2 = Console.ReadLine();
+                
+                foreach (User user in getAdmin)
+                {
+                    if (user.Email == input2 && user.IsEmployee.Equals(true))
+                        {
+                            Console.WriteLine("Access Granted");
+                            Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
+                            new AdminMenu(bl).Start();
+                        }
+                    else //fix issue
+                        {
+                            Console.WriteLine("Try Again.");
+                        }
+                
+                }
                 break;
 
                 // case 3 works!!!

@@ -119,3 +119,25 @@ SELECT * FROM Product;
 INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup) VALUES (1, 2, 10, .50);
 
 SELECT * FROM Inventory;
+
+ALTER TABLE [User]
+DROP COLUMN IsEmployee;
+
+SELECT * FROM [User];
+
+SELECT * FROM [User] WHERE ID = -1;
+
+ALTER TABLE [User]
+ADD IsEmployee BIT;
+
+UPDATE [User]
+SET IsEmployee = 0
+WHERE ID = 1;
+
+UPDATE [User]
+SET IsEmployee = 0
+WHERE ID = 2;
+
+UPDATE [User]
+SET IsEmployee = 0
+WHERE ID = 3;

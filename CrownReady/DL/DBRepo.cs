@@ -15,7 +15,22 @@ public class DBRepo : IRepo
         // _connectionString = connectionString;
         _connectionString = File.ReadAllText("connectionString.txt");
     }
-    public void AddInventory(int storeFrontIndex, Inventory inventoryToAdd)
+    public void AddInventory(int storeFrontID, int productID, Inventory inventoryToAdd)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void AddLineitem(int inventoryID, int orderID, LineItem lineitemToAdd)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void AddOrder(int userID, int storeID, Order orderToAdd)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void AddProduct(Product productToAdd)
     {
         throw new NotImplementedException();
     }
@@ -55,6 +70,37 @@ public class DBRepo : IRepo
 
     public void AddUser(User userToAdd)
     {
+    string selectCmd = "SELECT * FROM [User] WHERE ID = -1";
+
+        using(SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            using(SqlDataAdapter dataAdapter = new SqlDataAdapter(selectCmd, connection))
+            {
+                DataSet userSet = new DataSet();
+                dataAdapter.Fill(userSet, "User");
+
+                DataTable userTable = userSet.Tables["User"];
+
+                DataRow newRow = userTable.NewRow();
+
+                newRow["Name"] = userToAdd.Name; 
+                newRow["Email"] = userToAdd.Email;
+
+                userTable.Rows.Add(newRow);
+
+                string insertCmd = $"INSERT INTO User (Name, Email) VALUES ('{userToAdd.Name}', '{userToAdd.Email}')";
+
+                SqlCommandBuilder cmdBuilder= new SqlCommandBuilder(dataAdapter);
+
+                dataAdapter.InsertCommand = cmdBuilder.GetInsertCommand();
+                
+                dataAdapter.Update(userTable);
+            }
+        }    
+    }
+
+    public List<Product> GetAllProducts()
+    {
         throw new NotImplementedException();
     }
 
@@ -62,7 +108,9 @@ public class DBRepo : IRepo
     {
         List<StoreFront> allStoreFronts = new List<StoreFront>();
 
-        using(SqlConnection connection = new SqlConnection(_connectionString))
+        // using(SqlConnection connection = new SqlConnection(_connectionString))
+        using SqlConnection connection = new SqlConnection(_connectionString);
+
         {
             connection.Open();
 
@@ -75,19 +123,19 @@ public class DBRepo : IRepo
                     {
                             StoreFront storeFront = new StoreFront();
                             storeFront.ID = reader.GetInt32(0);
-                            Console.WriteLine(reader.GetInt32(0));
+                            // Console.WriteLine(reader.GetInt32(0));
 
                             storeFront.Name = reader.GetString(1);
-                            Console.WriteLine(reader.GetString(1));
+                            // Console.WriteLine(reader.GetString(1));
                             
                             storeFront.Address = reader.GetString(2);
-                            Console.WriteLine(reader.GetString(2));
+                            // Console.WriteLine(reader.GetString(2));
                             
                             storeFront.City = reader.GetString(3);
-                            Console.WriteLine(reader.GetString(3));
+                            // Console.WriteLine(reader.GetString(3));
                             
                             storeFront.State = reader.GetString(4);
-                            Console.WriteLine(reader.GetString(4));
+                            // Console.WriteLine(reader.GetString(4));
 
                             allStoreFronts.Add(storeFront);
                     }
@@ -99,42 +147,38 @@ public class DBRepo : IRepo
     }
 
     public List<User> GetAllUsers()
+    // public List<User> GetAllUsers()
     {
-        throw new NotImplementedException();
-        // List<StoreFront> allStoreFronts = new List<StoreFront>();
-        // using(SqlConnection connection = new SqlConnection(_connectionString))
-        // {
-        //     connection.Open();
+        List<User> allUsers = new List<User>();
+        using(SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
 
-        //     string queryTxt = "SELECT * FROM Storefront";
-        //     using(SqlCommand cmd = new SqlCommand(queryTxt, connection))
-        //     {
-        //         using(SqlDataReader reader = cmd.ExecuteReader())
-        //         {
-        //             while(reader.Read())
-        //             {
-        //                     StoreFront storeFront = new StoreFront();
-        //                     storeFront.ID = reader.GetInt32(0);
-        //                     // Console.WriteLine(reader.GetInt32(0));
+            string queryTxt = "SELECT * FROM [User]";
+            using(SqlCommand cmd = new SqlCommand(queryTxt, connection))
+            {
+                using(SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                            User user = new User();
+                            user.ID = reader.GetInt32(0);
+                            // Console.WriteLine(reader.GetInt32(0));
 
-        //                     storeFront.Name = reader.GetString(1);
-        //                     // Console.WriteLine(reader.GetString(1));
+                            user.Name = reader.GetString(1);
+                            // Console.WriteLine(reader.GetString(1));
                             
-        //                     storeFront.Address = reader.GetString(2);
-        //                     // Console.WriteLine(reader.GetString(2));
-                            
-        //                     storeFront.City = reader.GetString(3);
-        //                     // Console.WriteLine(reader.GetString(3));
-                            
-        //                     storeFront.State = reader.GetString(4);
-        //                     // Console.WriteLine(reader.GetString(4));
+                            user.Email = reader.GetString(2);
+                            // Console.WriteLine(reader.GetString(2));
 
-        //                     allStoreFronts.Add(storeFront);
-        //             }
-        //         }
-        //     }
-        //     connection.Close();
-        // }
-        // return allStoreFronts;
+                            user.IsEmployee = reader.GetBoolean(3);
+
+                            allUsers.Add(user);
+                    }
+                }
+            }
+            connection.Close();
+        }
+        return allUsers;
     }
 }
