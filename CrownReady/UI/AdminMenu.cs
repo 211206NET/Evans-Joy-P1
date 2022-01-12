@@ -35,7 +35,44 @@ public class AdminMenu : IMenu
                 break;
 
                 case "3":
-                Console.WriteLine("Inventory");
+                    viewInventory();
+                // Console.WriteLine("Inventory");
+                // List<StoreFront> allStorefronts = _bl.GetAllStoreFronts();
+                // Console.WriteLine("Select a location to add inventory.");
+                // for(int i = 0; i < allStorefronts.Count; i++)
+                // {
+                //     Console.WriteLine($"[{i}] {allStorefronts[i].DisplayStoreFront()}");
+                // }
+                // string? response = Console.ReadLine();
+                // int selection;
+
+                // bool parseSuccess = Int32.TryParse(input, out selection);
+
+                // if(parseSuccess && selection >= 0 && selection < allStorefronts.Count)
+                // {
+                //     //if the parse has been successful, then we know that the selection is integer and TryParse was able to convert the string to int successfully
+                //     //And we're making sure that our integer is staying within the bounds of our List
+                //     //now I want to collect information about the review
+                //     createReview:
+                //     Console.WriteLine("Give a rating: ");
+                //     int rating;
+                    
+                //     bool success = Int32.TryParse(Console.ReadLine(), out rating);
+                //     Console.WriteLine("Leave a Review: ");
+                //     string note = Console.ReadLine() ?? "";
+
+                //     try
+                //     {
+                //         Review newReview = new Review(rating, note);
+                //         _bl.AddReview(allRestaurants[selection].Id, newReview);
+                //         Console.WriteLine("Your review has been successfully added!");
+                //     }
+                //     catch(InputInvalidException ex)
+                //     {
+                //         Console.WriteLine(ex.Message);
+                //         goto createReview;
+                //     }
+                // }
                 break;
 
                 case "x":
@@ -57,27 +94,26 @@ public class AdminMenu : IMenu
 
         }
 
-
     }
     private void viewAllStoreFronts(){
             List<StoreFront> getAllStoreFronts = _bl.GetAllStoreFronts();
-            // Console.WriteLine("Select a location:");
-            //     if (getAllStoreFronts.Count > 0)
-            //     {
-            //         for(int i = 0; i < getAllStoreFronts.Count; i++)
-            //         {
-            //             Console.WriteLine($" [{i}] {getAllStoreFronts[i].DisplayStoreFront()}");
-            //         }
-            //         int selection = Int32.Parse(Console.ReadLine()?? "");
-            //         StoreFront selectStoreFront = getAllStoreFronts[selection];
+            Console.WriteLine("Select a location:");
+                if (getAllStoreFronts.Count > 0)
+                {
+                    for(int i = 0; i < getAllStoreFronts.Count; i++)
+                    {
+                        Console.WriteLine($"{getAllStoreFronts[i].DisplayStoreFront()}");
+                    }
+                    // int selection = Int32.Parse(Console.ReadLine()?? "");
+                    // StoreFront selectStoreFront = getAllStoreFronts[selection];
 
-            //         Console.WriteLine($"Welcome to {selectStoreFront.Name}");
-            //         Console.WriteLine("What would you like to do today?");
-            //     }
-            //     else
-            //     {
-            //         Console.WriteLine("There are no stores available :(");
-            //     }
+                    // Console.WriteLine($"Welcome to {selectStoreFront.Name}");
+                    // Console.WriteLine("What would you like to do today?");
+                }
+                else
+                {
+                    Console.WriteLine("There are no stores available :(");
+                }
         }
 
     private void addNewStoreFront(){
@@ -114,4 +150,24 @@ public class AdminMenu : IMenu
 
 
     }
+    private void viewInventory(){
+            List<StoreFront> getAllStoreFronts = _bl.GetAllStoreFronts();
+            Console.WriteLine("Select a location to add inventory:");
+                if (getAllStoreFronts.Count > 0)
+                {
+                    for(int i = 0; i < getAllStoreFronts.Count; i++)
+                    {
+                        Console.WriteLine($" [{i}] {getAllStoreFronts[i].DisplayStoreFront()}");
+                    }
+                    int selection = Int32.Parse(Console.ReadLine()?? "");
+                    StoreFront selectStoreFront = getAllStoreFronts[selection];
+
+                    Console.WriteLine($"Welcome to {selectStoreFront.Name}");
+                    new InventoryMenu(_bl).Start();
+                }
+                else
+                {
+                    Console.WriteLine("There are no stores available :(");
+                }
+        }
 }

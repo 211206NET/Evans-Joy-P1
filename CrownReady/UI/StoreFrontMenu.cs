@@ -36,6 +36,7 @@ public class StoreFrontMenu : IMenu
                 case "x":
                     Console.WriteLine("Goodbye!");
                     exit = true;
+
                 break;
                 
                 default:
