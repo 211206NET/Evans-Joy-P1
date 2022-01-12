@@ -1,7 +1,8 @@
 namespace Models;
 
-public class Orders
+public class Order
 {
+    public Order() {}
     public DateOnly OrderDate { get; set; }
     public int CustomerId { get; set; }
     public int OrderNumber { get; set; }
