@@ -23,19 +23,6 @@ public class MainMenu : IMenu {
         Console.Out.NewLine = "\r\n\r\n"; //For more info check out link: https://www.sitereq.com/post/6-ways-to-insert-new-line-in-c-and-aspnet
         Console.ForegroundColor = ConsoleColor.Cyan;
 
-        // // Testing for various users:
-        // User userOne = new User();
-        // userOne.Name = "Joy";
-        // userOne.Email = "joy@email.com";
-        // User userTwo = new User();
-        // userTwo.Name = "Test";
-        // userTwo.Email = "test@email.com";
-
-        // List<User> allUsers = new List<User>();
-        // allUsers.Add(userOne);
-        // allUsers.Add(userTwo);
-
-
         bool close = false;
 
         do
