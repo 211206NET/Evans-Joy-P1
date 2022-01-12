@@ -28,15 +28,15 @@ public class CustomerMenu : IMenu
             switch(input)
             {
                 case "1":
-                Console.WriteLine("Products");
+                Console.WriteLine("Coming Soon: Products");
                 break;
 
                 case "2":
-                Console.WriteLine("Cart");
+                Console.WriteLine("Coming Soon: Cart");
                 break;
 
                 case "3":
-                Console.WriteLine("View orders");
+                Console.WriteLine("Coming Soon: View orders");
                 break;
 
                 case "x":

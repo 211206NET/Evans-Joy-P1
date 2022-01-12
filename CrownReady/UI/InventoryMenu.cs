@@ -24,11 +24,11 @@ public class InventoryMenu : IMenu
             switch(input)
             {
                 case "1":
-                    Console.WriteLine("New product");
+                    Console.WriteLine("Coming Soon: New product");
                 break;
 
                 case "2":
-                    Console.WriteLine("Existing product");
+                    Console.WriteLine("Coming Soon: Existing product");
                 break;
 
                 case "x":

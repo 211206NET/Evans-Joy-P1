@@ -30,7 +30,7 @@ public class StoreFrontMenu : IMenu
                 break;
 
                 case "2":
-                    Console.WriteLine("View Previous Orders");
+                    Console.WriteLine("Coming Soon: View Previous Orders");
                 break;
 
                 case "x":
