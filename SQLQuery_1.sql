@@ -123,7 +123,6 @@ SELECT * FROM Inventory;
 ALTER TABLE [User]
 DROP COLUMN IsEmployee;
 
-SELECT * FROM [User];
 
 SELECT * FROM [User] WHERE ID = -1;
 
@@ -141,3 +140,9 @@ WHERE ID = 2;
 UPDATE [User]
 SET IsEmployee = 0
 WHERE ID = 3;
+
+UPDATE [User]
+SET IsEmployee = 0
+WHERE ID = 6;
+
+SELECT * FROM [User];
