@@ -101,7 +101,40 @@ public class DBRepo : IRepo
 
     public List<Product> GetAllProducts()
     {
-        throw new NotImplementedException();
+        List<Product> allProducts = new List<Product>();
+
+        using SqlConnection connection = new SqlConnection(_connectionString);
+
+        {
+            connection.Open();
+
+            string queryTxt = "SELECT * FROM Product";
+            using(SqlCommand cmd = new SqlCommand(queryTxt, connection))
+            {
+                using(SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                            Product products = new Product();
+                            products.ID = reader.GetInt32(0);
+                            // Console.WriteLine(reader.GetInt32(0));
+
+                            products.Name = reader.GetString(1);
+                            // Console.WriteLine(reader.GetString(1));
+                            
+                            products.Description = reader.GetString(2);
+                            // Console.WriteLine(reader.GetString(2));
+                            
+                            products.Price = reader.GetDecimal(3);
+                            // Console.WriteLine(reader.GetString(3));
+
+                            allProducts.Add(products);
+                    }
+                }
+            }
+            connection.Close();
+        }
+        return allProducts;
     }
 
     public List<StoreFront> GetAllStoreFronts()
