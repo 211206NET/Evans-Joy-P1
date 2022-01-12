@@ -85,6 +85,7 @@ public class DBRepo : IRepo
 
                 newRow["Name"] = userToAdd.Name; 
                 newRow["Email"] = userToAdd.Email;
+                newRow["IsEmployee"] = userToAdd.IsEmployee;
 
                 userTable.Rows.Add(newRow);
 
