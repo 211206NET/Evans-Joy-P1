@@ -12,56 +12,6 @@ CREATE TABLE Storefront(
     City NVARCHAR(100),
     State NVARCHAR(50)
 );
-
-
-CREATE TABLE Product(
-    Id INT PRIMARY KEY IDENTITY(1, 1),
-    Name NVARCHAR(450) NOT NULL UNIQUE,
-    Description NTEXT,
-    Price DECIMAL
-);
-
-CREATE TABLE Inventory(
-    Id INT PRIMARY KEY IDENTITY(1, 1),
-    StorefrontId INT FOREIGN KEY REFERENCES Storefront(Id) NOT NULL,
-    ProductId INT FOREIGN KEY REFERENCES Product(Id) NOT NULL,
-    Quantity INT,
-    Markup DECIMAL
-);
-
--- CREATE TABLE UserType(
---     Id INT PRIMARY KEY IDENTITY(1, 1),
---     Name NVARCHAR(450) NOT NULL
--- );
-
-CREATE TABLE [User](
-    -- Note: User is a reserved keyword so use [] so that SQL knows your referring to a table.
-    Id INT PRIMARY KEY IDENTITY(1, 1),
-    -- UserTypeId INT FOREIGN KEY REFERENCES UserType(Id) NOT NULL,
-    Name NVARCHAR(450) NOT NULL,
-    Email NVARCHAR(450) NOT NULL,
-    IsEmployee BIT NOT NULL
-);
-
-CREATE TABLE [Order](
-    -- Note: Order is a reserved keyword so use [] so that SQL knows your referring to a table.
-    Id INT PRIMARY KEY IDENTITY(1, 1),
-    UserId INT FOREIGN KEY REFERENCES [User](Id) NOT NULL,
-    StorefrontId INT FOREIGN KEY REFERENCES Storefront(Id) NOT NULL,
-    OrderNumber Int NOT NULL,
-    OrderDate DATE NOT NULL,
-    Total DECIMAL NOT NULL,
-    Placed BIT NOT NULL
-);
-
-CREATE TABLE LineItem(
-    -- Note: Order is a reserved keyword so use [] so that SQL knows your referring to a table.
-    Id INT PRIMARY KEY IDENTITY(1, 1),
-    InventoryId INT FOREIGN KEY REFERENCES Inventory(Id) NOT NULL,
-    OrderId INT FOREIGN KEY REFERENCES [Order](Id) NOT NULL,
-    Quantity Int NOT NULL,
-);
-
 -- use this link to generate random addresses: https://www.randomlists.com/random-addresses
 
 INSERT INTO Storefront (Name, Address, City, State) VALUES
@@ -75,14 +25,13 @@ INSERT INTO Storefront (Name, Address, City, State) VALUES
 
 SELECT * FROM Storefront;
 
-INSERT INTO [User] (Name, Email, IsEmployee) VALUES
-('Joy', 'joy@email.com', 0);
 
-INSERT INTO [User] (Name, Email, IsEmployee) VALUES
-('Admin', 'admin@email.com', 1);
-
-SELECT * FROM [User];
-
+CREATE TABLE Product(
+    Id INT PRIMARY KEY IDENTITY(1, 1),
+    Name NVARCHAR(450) NOT NULL UNIQUE,
+    Description NTEXT,
+    Price DECIMAL
+);
 -- Replace Palmer's to Palmer''s to prevent error
 INSERT INTO Product (Name, Description, Price) VALUES
 ('Palmer''s Coconut Oil Formula Moisture Boost Leave-in Conditioner, 8.5 oz.', 
@@ -114,11 +63,67 @@ INSERT INTO Product (Name, Description, Price) VALUES
 It''s available in a convenient two pack or as a single container; each jar contains 12 oz.',
  5.87);
 
+INSERT INTO Product (Name, Description, Price) VALUES
+('Paul Mitchell Tea Tree Special Shampoo, 10.1 oz',
+'Ordinary shampoos need not apply! Paul Mitchell''s #1 best-selling Tea Tree Special Shampoo tingles and invigorates for a refreshed scalp and shiny hair.',
+15.00);
+
+INSERT INTO Product (Name, Description, Price) VALUES
+('Avocado Infusion Restorative Conditioner (8 oz)',
+'Our Avocado Infusion Restorative Conditioner is a delightful treat for your hair. Avocado oil & silk amino acids work together to restore moisture, nourishment and strength to the hair. It leaves the hair soft, silky and moisturized.',
+19.99);
+
+INSERT INTO Product (Name, Description, Price) VALUES
+('PATTERN Mist Spray Bottle',
+'The PATTERN Mist Spray Bottle infuses hair when a little extra moisture is needed to get the job done. Featuring the premium Flairosol airless technology, our spray bottle produces a continuous fine mist in a prolonged spray that can be used in all directions with water or your own curl cocktails.',
+13.00);
+
+INSERT INTO Product (Name, Description, Price) VALUES
+('Ouidad Curl Quencher Moisturizing Shampoo',
+'Ouidad''s Curl Quencher Moisturizing Shampoo cleanses while giving tight curls the right boost of moisture to restore internal weight, without any of the greasiness.',
+18.00);
+
+INSERT INTO Product (Name, Description, Price) VALUES
+('Diane Shampoo Massage Brush',
+'The Diane Shampoo Massage Brush is ideal for deep scalp cleansing, exfoliating and massaging in the shower.',
+7.99)
+
+INSERT INTO Product (Name, Description, Price) VALUES
+('Diane Hanging Shower Comb',
+'The Diane Hanging Shower Comb features rounded teeth that are gentle on hair and scalp. Ideal for wet detangling or evenly distributing conditioner.',
+3.99)
+
 SELECT * FROM Product;
 
+CREATE TABLE Inventory(
+    Id INT PRIMARY KEY IDENTITY(1, 1),
+    StorefrontId INT FOREIGN KEY REFERENCES Storefront(Id) NOT NULL,
+    ProductId INT FOREIGN KEY REFERENCES Product(Id) NOT NULL,
+    Quantity INT,
+    Markup DECIMAL
+);
 INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup) VALUES (1, 2, 10, .50);
 
 SELECT * FROM Inventory;
+
+-- CREATE TABLE UserType(
+--     Id INT PRIMARY KEY IDENTITY(1, 1),
+--     Name NVARCHAR(450) NOT NULL
+-- );
+
+CREATE TABLE [User](
+    -- Note: User is a reserved keyword so use [] so that SQL knows your referring to a table.
+    Id INT PRIMARY KEY IDENTITY(1, 1),
+    -- UserTypeId INT FOREIGN KEY REFERENCES UserType(Id) NOT NULL,
+    Name NVARCHAR(450) NOT NULL,
+    Email NVARCHAR(450) NOT NULL,
+    IsEmployee BIT NOT NULL
+);
+INSERT INTO [User] (Name, Email, IsEmployee) VALUES
+('Joy', 'joy@email.com', 0);
+
+INSERT INTO [User] (Name, Email, IsEmployee) VALUES
+('Admin', 'admin@email.com', 1);
 
 ALTER TABLE [User]
 DROP COLUMN IsEmployee;
@@ -146,3 +151,22 @@ SET IsEmployee = 0
 WHERE ID = 6;
 
 SELECT * FROM [User];
+
+CREATE TABLE [Order](
+    -- Note: Order is a reserved keyword so use [] so that SQL knows your referring to a table.
+    Id INT PRIMARY KEY IDENTITY(1, 1),
+    UserId INT FOREIGN KEY REFERENCES [User](Id) NOT NULL,
+    StorefrontId INT FOREIGN KEY REFERENCES Storefront(Id) NOT NULL,
+    OrderNumber Int NOT NULL,
+    OrderDate DATE NOT NULL,
+    Total DECIMAL NOT NULL,
+    Placed BIT NOT NULL
+);
+
+CREATE TABLE LineItem(
+    -- Note: Order is a reserved keyword so use [] so that SQL knows your referring to a table.
+    Id INT PRIMARY KEY IDENTITY(1, 1),
+    InventoryId INT FOREIGN KEY REFERENCES Inventory(Id) NOT NULL,
+    OrderId INT FOREIGN KEY REFERENCES [Order](Id) NOT NULL,
+    Quantity Int NOT NULL,
+);
