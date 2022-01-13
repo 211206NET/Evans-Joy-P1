@@ -102,7 +102,24 @@ CREATE TABLE Inventory(
     Quantity INT,
     Markup DECIMAL
 );
+ALTER TABLE Inventory
+ALTER COLUMN Markup DECIMAL(10,2);
+
 INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup) VALUES (1, 2, 10, .50);
+UPDATE Inventory
+SET Markup = 0.50
+WHERE ID = 1;
+INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup) VALUES (2, 2, 40, .50);
+UPDATE Inventory
+SET Markup = 0.50
+WHERE ID = 2;
+INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup) VALUES (6, 2, 25, .50);
+DELETE FROM Inventory WHERE StorefrontId=3;
+INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup) VALUES (7, 2, 60, .50);
+INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup) VALUES (8, 2, 20, .50);
+UPDATE Inventory
+SET Markup = 0.50
+WHERE ID = 5;
 
 SELECT * FROM Inventory;
 
