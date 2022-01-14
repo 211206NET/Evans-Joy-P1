@@ -17,6 +17,7 @@
 
 - [Introduction](#introduction)
 - [Features](#features)
+- [Tech Stack](#techstack)
 <!-- - [Feedback](#feedback) -->
 - [Build Process](#build-process)
 
@@ -30,6 +31,14 @@ Built with C#.
 <!-- <p align="center">
   <img src = "http://i.imgur.com/HowF6aM.png" width=350>
 </p> -->
+
+## Tech Stack
+- C#
+- Xunit
+- AWS RDS SQLServer DB
+- ADO.NET
+- Serilog or Nlog (or any other logging frameworks)
+- ASP.NET Core WEB API
 
 ## Features
 
