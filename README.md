@@ -17,7 +17,7 @@
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Tech Stack](#techstack)
+- [Tech Stack](#tech-stack)
 <!-- - [Feedback](#feedback) -->
 - [Build Process](#build-process)
 
