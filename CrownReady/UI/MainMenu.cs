@@ -16,7 +16,7 @@ public class MainMenu : IMenu {
     public void Start() {
 
         string connectionString = File.ReadAllText("connectionString.txt");
-        IRepo repo = new DBRepo();
+        IRepo repo = new DBRepo(connectionString);
 
         IBL bl = new CRBL(repo);
 
