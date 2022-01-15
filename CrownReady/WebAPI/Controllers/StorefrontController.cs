@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
+using BL;
+using CustomExceptions;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -7,50 +9,44 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StorefrontController : ControllerBase
+    public class StoreFrontController : ControllerBase
     {
-        // GET: api/<StorefrontController>
+        private IBL _bl;
+        public StoreFrontController(IBL bl)
+        {
+            _bl = bl;
+        }
+        // GET: api/<StoreFrontController>
         [HttpGet]
         public List<StoreFront> Get()
         {
-            return new List<StoreFront>(){
-                new StoreFront() 
-                { 
-                    Name = "CrownReady - Pearland",
-                    Address = "random address",
-                    City = "Pearland",
-                    State = "TX"
-                },
-                new StoreFront()
-                {
-                    Name = "CrownReady - Sugar Land",
-                    Address = "random address",
-                    City = "Sugar Land",
-                    State = "TX"
-                }
-            };
+            return _bl.GetAllStoreFronts();
         }
 
-        // GET api/<StorefrontController>/5
+        // GET api/<StoreFrontController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<StorefrontController>
+        // POST api/<StoreFrontController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] StoreFront st)
         {
         }
 
-        // PUT api/<StorefrontController>/5
+        // PUT api/<StoreFrontController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] StoreFront storeFrontToAdd)
         {
+            try
+            {
+                _bl.AddStoreFront(storeFrontToAdd);
+            }
         }
 
-        // DELETE api/<StorefrontController>/5
+        // DELETE api/<StoreFrontController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

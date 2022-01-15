@@ -10,10 +10,11 @@ public class DBRepo : IRepo
     //     _connectionString = connectionString;
     // }
 
-    public DBRepo()
+    public DBRepo(string connectionString)
     {
         // _connectionString = connectionString;
-        _connectionString = File.ReadAllText("connectionString.txt");
+        _connectionString = connectionString;
+        // _connectionString = File.ReadAllText("connectionString.txt");
     }
     public void AddInventory(int storeFrontID, int productID, Inventory inventoryToAdd)
     {
