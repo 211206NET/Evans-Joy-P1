@@ -1,4 +1,4 @@
-/*using System.Text.Json;
+using System.Text.Json;
 namespace DL;
 
 public class FileRepo : IRepo
@@ -95,4 +95,8 @@ public class FileRepo : IRepo
         // _dl.AddLineitem(inventoryID, orderID, lineitemToAdd);
     }
 
-}*/
+    public StoreFront GetStoreFrontById(int storeFrontId)
+    {
+        throw new NotImplementedException();
+    }
+}
