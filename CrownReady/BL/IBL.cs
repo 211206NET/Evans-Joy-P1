@@ -13,6 +13,7 @@ public interface IBL
     List<User> GetAllUsers();
     void AddUser ( User userToAdd);
     // product methods(third):(1)add product;(2)get all products;(3)add product to inventory
+    void AddProduct (Product productToAdd);
     // order methods(third):
     void AddOrder(int userID, int storeID, Order orderToAdd);
 

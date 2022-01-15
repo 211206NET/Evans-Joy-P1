@@ -18,7 +18,8 @@ public class AdminMenu : IMenu
             Console.WriteLine("Please make a selection of what you would like to do today.");
             Console.WriteLine("[1] View all locations");
             Console.WriteLine("[2] Add new locations");
-            Console.WriteLine("[3] Check inventory");
+            Console.WriteLine("[3] Add new product");
+            Console.WriteLine("[4] Check inventory");
             Console.WriteLine("[x] Go back to Main Menu", Console.ForegroundColor = ConsoleColor.Red);
             
             Console.ForegroundColor = ConsoleColor.White;
@@ -35,6 +36,10 @@ public class AdminMenu : IMenu
                 break;
 
                 case "3":
+                    addNewProduct();
+                break;
+
+                case "4":
                     viewInventory();
                 // Console.WriteLine("Inventory");
                 // List<StoreFront> allStorefronts = _bl.GetAllStoreFronts();
@@ -116,6 +121,37 @@ public class AdminMenu : IMenu
                 }
         }
 
+    private void addNewProduct(){
+        createProduct:
+        Console.WriteLine("Create new product:");
+        Console.WriteLine("Name:");
+        string? Name = Console.ReadLine();
+        Console.WriteLine("Description:");
+        string? Description = Console.ReadLine();
+        Console.WriteLine("Price:");
+        decimal Price = Decimal.Parse(Console.ReadLine()?? "");
+
+        try
+        {
+
+        Product newProduct = new Product();
+        newProduct.Name = Name ?? "";
+        newProduct.Description = Description ?? "";
+        newProduct.Price = Price;
+        
+        _bl.AddProduct(newProduct);
+
+        Console.WriteLine($"You successfully added a new product: {newProduct.Name}.");
+        // create an option to return to the main menu
+        }
+        catch(InputInvalidException ex)
+        {
+            Console.WriteLine(ex.Message);
+            goto createProduct;
+        }
+
+
+    }
     private void addNewStoreFront(){
         createStoreFront:
         Console.WriteLine("Create new location:");

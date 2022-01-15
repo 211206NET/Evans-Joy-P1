@@ -33,7 +33,34 @@ public class DBRepo : IRepo
 
     public void AddProduct(Product productToAdd)
     {
-        throw new NotImplementedException();
+        string selectCmd = "SELECT * FROM Product WHERE ID = -1";
+
+        using(SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            using(SqlDataAdapter dataAdapter = new SqlDataAdapter(selectCmd, connection))
+            {
+                DataSet productSet = new DataSet();
+                dataAdapter.Fill(productSet, "Product");
+
+                DataTable productTable = productSet.Tables["Product"];
+
+                DataRow newRow = productTable.NewRow();
+
+                newRow["Name"] = productToAdd.Name; 
+                newRow["Description"] = productToAdd.Description ?? "";
+                newRow["Price"] = productToAdd.Price;
+
+                productTable.Rows.Add(newRow);
+
+                string insertCmd = $"INSERT INTO Product (Name, Description, Price) VALUES ('{productToAdd.Name}', '{productToAdd.Description}', '{productToAdd.Price}')";
+
+                SqlCommandBuilder cmdBuilder= new SqlCommandBuilder(dataAdapter);
+
+                dataAdapter.InsertCommand = cmdBuilder.GetInsertCommand();
+                
+                dataAdapter.Update(productTable);
+            }
+        }
     }
 
     public void AddStoreFront(StoreFront storeFrontToAdd)
