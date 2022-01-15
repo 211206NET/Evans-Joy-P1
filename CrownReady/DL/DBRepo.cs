@@ -216,4 +216,27 @@ public class DBRepo : IRepo
         }
         return allUsers;
     }
+
+    public StoreFront GetStoreFrontById(int storeFrontId)
+    {
+        string query = "Select * From Storefront Where ID = @storefrontID";
+        using SqlConnection connection = new SqlConnection(_connectionString);
+        connection.Open();
+        using SqlCommand cmd = new SqlCommand(query, connection);
+        SqlParameter param = new SqlParameter("@storefrontID", storeFrontId);
+        cmd.Parameters.Add(param);
+
+        using SqlDataReader reader = cmd.ExecuteReader();
+        StoreFront storeFront = new StoreFront();
+        if (reader.Read())
+        {
+            storeFront.ID = reader.GetInt32(0);
+            storeFront.Name = reader.GetString(1);
+            storeFront.Address = reader.GetString(2);
+            storeFront.City = reader.GetString(3);
+            storeFront.State = reader.GetString(4);
+        }
+        connection.Close ();
+        return storeFront;
+    }
 }

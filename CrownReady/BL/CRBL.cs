@@ -87,4 +87,9 @@ public class CRBL : IBL
         // future code (20211214 @ 24:10)
         _dl.AddLineitem(inventoryID, orderID, lineitemToAdd);
     }
+
+    public StoreFront GetStoreFrontById(int storeFrontId)
+    {
+        return _dl.GetStoreFrontById(storeFrontId);
+    }
 }

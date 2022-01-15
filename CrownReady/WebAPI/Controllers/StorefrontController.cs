@@ -25,9 +25,17 @@ namespace WebAPI.Controllers
 
         // GET api/<StoreFrontController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<StoreFront> Get(int id)
         {
-            return "value";
+            StoreFront foundStoreFront = _bl.GetStoreFrontById(id);
+            if (foundStoreFront.ID != 0)
+            {
+                return Ok(foundStoreFront);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
         // POST api/<StoreFrontController>
