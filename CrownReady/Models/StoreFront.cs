@@ -1,10 +1,14 @@
 using CustomExceptions;
 using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations; //check out
 
 namespace Models;
 public class StoreFront{
     public StoreFront() {}
     public int ID { get; set; }
+
+    [Required]
+    [RegularExpression("^[a-zA-Z0-9 !?']+$", ErrorMessage = "Storefront name can only have alphanumeric characters, white space, !, ?, and '.")]
     public string Name { get; set; }
     // public string Name { 
     //     get => _name;
@@ -30,7 +34,7 @@ public class StoreFront{
     public string State { get; set; }
 
     // things to consider: whether or not it should be changed to private instead of public
-    private string _name;
+    // private string _name;
     // public string GetName() {
     //     return this._name;
     // }

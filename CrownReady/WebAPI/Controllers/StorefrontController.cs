@@ -32,18 +32,23 @@ namespace WebAPI.Controllers
 
         // POST api/<StoreFrontController>
         [HttpPost]
-        public void Post([FromBody] StoreFront st)
-        {
-        }
-
-        // PUT api/<StoreFrontController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] StoreFront storeFrontToAdd)
+        public ActionResult Post([FromBody] StoreFront storeFrontToAdd)
         {
             try
             {
                 _bl.AddStoreFront(storeFrontToAdd);
+                return Created("Successfully add", storeFrontToAdd);
             }
+            catch (DuplicateRecordException ex)
+            {
+                return Conflict(ex.Message);
+            }
+        }
+
+        // PUT api/<StoreFrontController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
         }
 
         // DELETE api/<StoreFrontController>/5
