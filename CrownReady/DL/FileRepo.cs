@@ -50,7 +50,7 @@ public class FileRepo : IRepo
     {
 
     }
-    // user methods
+    // user methods(first):(1)get all users; (2)add user; (3)create signup method
     public List<User> GetAllUsers()
     {
         // return _dl.GetAllUsers();
@@ -63,6 +63,10 @@ public class FileRepo : IRepo
     public void AddUser ( User userToAdd)
     {
         // _dl.AddUser(userToAdd);
+    }
+    public void SignUp(string name, string email)
+    {
+        // _dl.SignUp(name, email);
     }
 
         // product methods(first):(1)add product;(2)get all products

@@ -70,21 +70,9 @@ public class MainMenu : IMenu {
                 string? name = Console.ReadLine();
                 Console.WriteLine("Email:");
                 string? email = Console.ReadLine(); 
-                User newUser = new User {
-                    Name = name ?? "",
-                    Email = email ?? "",
-                    IsEmployee = false
-                };
 
-                bl.AddUser(newUser);
+                bl.SignUp(name, email);
 
-                // List<User> getAllUsers = bl.GetAllUsers();
-                // also make sure the user's account don't already exist
-
-                // getAllUsers.Add(newUser);
-                // allUsers.Add(newUser);
-                Console.WriteLine($"Congrats {newUser.Name}! You successfully signed up!");
-                // Console.WriteLine($"Congrats {name}! You successfully signed up!");
                 new StoreFrontMenu(bl).Start();
 
                 break;

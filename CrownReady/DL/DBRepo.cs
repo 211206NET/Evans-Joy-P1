@@ -266,4 +266,21 @@ public class DBRepo : IRepo
         connection.Close ();
         return storeFront;
     }
+
+    public void SignUp(string name, string email)
+    {
+        Console.WriteLine(name);
+        Console.WriteLine(email);
+
+        User newUser = new User 
+        {
+            Name = name ?? "",
+            Email = email ?? "",
+            IsEmployee = false
+        };
+
+        AddUser(newUser);
+
+        Console.WriteLine($"Congrats {newUser.Name}! You successfully signed up!");
+    }
 }
