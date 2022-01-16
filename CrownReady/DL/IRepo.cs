@@ -12,6 +12,8 @@ public interface IRepo
     List<User> GetAllUsers();
     void AddUser ( User userToAdd);
     void SignUp(string name, string email);
+    bool LogIn(string email);
+    void CurrentUser(User currentUser);
     // product methods(second):(1)add product;(2)get all products;(3)add product to inventory
     List<Product> GetAllProducts();
     void AddProduct (Product productToAdd);

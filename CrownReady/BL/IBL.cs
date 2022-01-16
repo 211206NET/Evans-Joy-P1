@@ -13,6 +13,8 @@ public interface IBL
     List<User> GetAllUsers();
     void AddUser ( User userToAdd);
     void SignUp(string name, string email);
+    bool LogIn(string email);
+    void CurrentUser(User currentUser);
     // product methods(third):(1)add product;(2)get all products;(3)add product to inventory
     void AddProduct (Product productToAdd);
     // order methods(third):

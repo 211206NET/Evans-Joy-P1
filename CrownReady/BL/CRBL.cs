@@ -65,6 +65,14 @@ public class CRBL : IBL
     {
         _dl.SignUp(name, email);
     }
+    public bool LogIn(string email)
+    {
+        return _dl.LogIn(email);
+    }
+    public void CurrentUser(User currentUser)
+    {
+        _dl.CurrentUser(currentUser);
+    }
 
     // product methods(first):(1)add product;(2)get all products
     /// <summary>

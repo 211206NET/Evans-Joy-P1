@@ -68,7 +68,14 @@ public class FileRepo : IRepo
     {
         // _dl.SignUp(name, email);
     }
-
+    public bool LogIn(string email)
+    {
+        throw new NotImplementedException();
+    }
+    public void CurrentUser(User currentUser)
+    {
+        // _dl.CurrentUser(currentUser);
+    }
         // product methods(first):(1)add product;(2)get all products
     /// <summary>
     /// adds a new product to the list

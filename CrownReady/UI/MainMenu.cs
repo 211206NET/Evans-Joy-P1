@@ -44,23 +44,16 @@ public class MainMenu : IMenu {
         switch(response)
             {
                 case "1":
-                List<User> getUsers = bl.GetAllUsers();
-
                 Console.WriteLine("Email:");
                 string? input = Console.ReadLine();
                 
-                foreach (User user in getUsers) 
+                if(bl.LogIn(input) == true)
                 {
-                    if (user.Email == input && user.IsEmployee.Equals(false))
-                        {
-                            Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
-                            new StoreFrontMenu(bl).Start();
-                        }
-                    else //fix issue
-                        {
-                            Console.WriteLine("Try Again.");
-                        }
-                
+                    new StoreFrontMenu(bl).Start();
+                }
+                else
+                {
+                    Console.WriteLine("Try Again.");
                 }
                 break;
 

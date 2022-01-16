@@ -127,7 +127,6 @@ public class DBRepo : IRepo
             }
         }    
     }
-
     public List<Product> GetAllProducts()
     {
         List<Product> allProducts = new List<Product>();
@@ -265,6 +264,27 @@ public class DBRepo : IRepo
         }
         connection.Close ();
         return storeFront;
+    }
+    public void CurrentUser(User currentUser)
+    {
+        // Console.WriteLine(currentUser.Name);
+        // Console.WriteLine($"Welcome back {currentUser.Name}! You've successfully logged in!");
+    }
+
+    public bool LogIn(string email)
+    {
+        List<User> getUsers = GetAllUsers();
+
+        foreach (User user in getUsers) 
+            {
+                if (user.Email == email && user.IsEmployee.Equals(false))
+                    {
+                        CurrentUser(user); // get currect user info
+                        Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
+                        return true;
+                    }
+            }
+        return false;
     }
 
     public void SignUp(string name, string email)
