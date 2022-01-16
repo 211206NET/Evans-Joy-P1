@@ -58,7 +58,6 @@ public class MainMenu : IMenu {
                 break;
 
                 case "2":
-                
                 Console.WriteLine("Name:");
                 string? name = Console.ReadLine();
                 Console.WriteLine("Email:");
@@ -70,44 +69,27 @@ public class MainMenu : IMenu {
 
                 break;
 
-                // case 2 works!!!
-
                 case "3":
-
-                List<User> getAdmin = bl.GetAllUsers();
-
                 Console.WriteLine("Email:");
                 string? input2 = Console.ReadLine();
-                
-                foreach (User user in getAdmin)
+
+                if(bl.LogIn(input2) == true)
                 {
-                    if (user.Email == input2 && user.IsEmployee.Equals(true))
-                        {
-                            Console.WriteLine("Access Granted");
-                            Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
-                            new AdminMenu(bl).Start();
-                        }
-                    else //fix issue
-                        {
-                            Console.WriteLine("Try Again.");
-                        }
-                
+                    new AdminMenu(bl).Start();
+                }
+                else
+                {
+                    Console.WriteLine("Try Again.");
                 }
                 break;
-
-                // case 3 works!!!
 
                 case "x":
                 close = true;
                 break;
 
-                // case x works!!!
-
                 default:
                 Console.WriteLine("Sorry, Try again");
                 break;
-
-                //default works!!!
             }
             
         } while (!close);

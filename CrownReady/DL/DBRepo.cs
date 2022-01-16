@@ -278,11 +278,18 @@ public class DBRepo : IRepo
         foreach (User user in getUsers) 
             {
                 if (user.Email == email && user.IsEmployee.Equals(false))
-                    {
-                        CurrentUser(user); // get currect user info
-                        Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
-                        return true;
-                    }
+                {
+                    CurrentUser(user); // get currect user info
+                    Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
+                    return true;
+                }
+                else if (user.Email == email && user.IsEmployee.Equals(true))
+                {
+                    CurrentUser(user); // get currect user info
+                    Console.WriteLine("Access Granted");
+                    Console.WriteLine($"Welcome back {user.Name}! You've successfully logged in!");
+                    return true;
+                }
             }
         return false;
     }
