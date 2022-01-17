@@ -2,6 +2,7 @@
 using Models;
 using BL;
 using CustomExceptions;
+using Microsoft.Extensions.Caching.Memory;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,15 +13,24 @@ namespace WebAPI.Controllers
     public class StoreFrontController : ControllerBase
     {
         private IBL _bl;
-        public StoreFrontController(IBL bl)
+        private IMemoryCache _memoryCache;
+        public StoreFrontController(IBL bl, IMemoryCache memoryCache)
         {
             _bl = bl;
+            _memoryCache = memoryCache;
         }
         // GET: api/<StoreFrontController>
         [HttpGet]
         public List<StoreFront> Get()
         {
-            return _bl.GetAllStoreFronts();
+            List<StoreFront> allStoreFronts;
+
+            if(!_memoryCache.TryGetValue("storefront", out allStoreFronts))
+            {
+                allStoreFronts = _bl.GetAllStoreFronts();
+                _memoryCache.Set("storefront", allStoreFronts, new TimeSpan(0,0,30));
+            }
+            return allStoreFronts;
         }
 
         // GET api/<StoreFrontController>/5
