@@ -331,4 +331,41 @@ public class DBRepo : IRepo
 
         Console.WriteLine($"Congrats {newUser.Name}! You successfully signed up!");
     }
+
+    public List<Inventory> GetAllInventory()
+    {
+        List<Inventory> allInventory = new List<Inventory>();
+        using(SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            string queryTxt = "SELECT * FROM Inventory";
+            using(SqlCommand cmd = new SqlCommand(queryTxt, connection))
+            {
+                using(SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                            Inventory inventory = new Inventory();
+                            inventory.ID = reader.GetInt32(0);
+                            // Console.WriteLine(reader.GetInt32(0));
+
+                            inventory.StoreId = reader.GetInt32(1);
+                            // Console.WriteLine(reader.GetString(1));
+                            
+                            inventory.ProductId = reader.GetInt32(2);
+                            // Console.WriteLine(reader.GetString(2));
+
+                            inventory.Quantity = reader.GetInt32(3);
+                            
+                            inventory.Markup = reader.GetDecimal(4);
+
+                            allInventory.Add(inventory);
+                    }
+                }
+            }
+            connection.Close();
+        }
+        return allInventory;
+    }
 }

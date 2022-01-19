@@ -47,6 +47,8 @@ public class StoreFrontMenu : IMenu
     }
     private void viewAllStoreFronts(){
         List<StoreFront> getAllStoreFronts = _bl.GetAllStoreFronts();
+        List<Inventory> getAllInventory = _bl.GetAllInventory();
+
         Console.WriteLine("Select a location:");
         if (getAllStoreFronts.Count > 0)
         {
@@ -58,7 +60,18 @@ public class StoreFrontMenu : IMenu
             StoreFront selectStoreFront = getAllStoreFronts[selection];
 
             Console.WriteLine($"Welcome to {selectStoreFront.Name}");
-            new CustomerMenu().Start();
+            if (getAllInventory.Count > 0)
+            {
+                for(int i = 0; i < getAllInventory.Count; i++)
+                {
+                    Console.WriteLine($"[{i}] {getAllInventory[i].DisplayInventory()}");
+                }
+            }
+            else
+            {
+            Console.WriteLine("There are no products available :(");
+            }
+            // new CustomerMenu().Start();
         }
         else
         {

@@ -50,6 +50,10 @@ public class FileRepo : IRepo
     {
 
     }
+    public List<Inventory> GetAllInventory()
+    {
+        return new List<Inventory>();
+    }
     // user methods(first):(1)get all users; (2)add user; (3)create signup method
     public List<User> GetAllUsers()
     {

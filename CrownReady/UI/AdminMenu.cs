@@ -20,6 +20,7 @@ public class AdminMenu : IMenu
             Console.WriteLine("[2] Add new locations");
             Console.WriteLine("[3] Add new product");
             Console.WriteLine("[4] Add product to inventory");
+            Console.WriteLine("[5] Edit product to inventory");
             Console.WriteLine("[x] Go back to Main Menu", Console.ForegroundColor = ConsoleColor.Red);
             
             Console.ForegroundColor = ConsoleColor.White;
@@ -41,6 +42,10 @@ public class AdminMenu : IMenu
 
                 case "4":
                     addProductToInventory();
+                break;
+                
+                case "5":
+                    editProductInInventory();
                 break;
 
                 case "x":
@@ -78,7 +83,6 @@ public class AdminMenu : IMenu
                     Console.WriteLine("There are no stores available :(");
                 }
         }
-
     private void addNewProduct(){
         createProduct:
         Console.WriteLine("Create new product:");
@@ -190,5 +194,8 @@ public class AdminMenu : IMenu
         {
             Console.WriteLine("There are no stores available :(");
         }
+    }
+    private void editProductInInventory(){
+        
     }
 }

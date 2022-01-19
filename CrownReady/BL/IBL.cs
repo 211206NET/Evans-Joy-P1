@@ -8,6 +8,7 @@ public interface IBL
     StoreFront GetStoreFrontById(int storeFrontId);
     // inventory methods(third):(1)add inventory;(2)get all inventories;(3)add inventory to storefront
     void AddToInventory(int storeFrontID, int productID, Inventory inventoryToAdd);
+    List<Inventory> GetAllInventory();
 
     // user methods(first):(1)get all users; (2)add user; (3)create signup method
     List<User> GetAllUsers();
@@ -19,7 +20,6 @@ public interface IBL
     List<Product> GetAllProducts();
 
     void AddProduct (Product productToAdd);
-    List<Product> GetAllProducts();
     // order methods(third):
     void AddOrder(int userID, int storeID, Order orderToAdd);
 

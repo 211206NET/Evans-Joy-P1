@@ -40,7 +40,10 @@ public class CRBL : IBL
         // future code (20211214 @ 24:10)
         _dl.AddToInventory(storeFrontID, productID, inventoryToAdd);
     }
-
+    public List<Inventory> GetAllInventory()
+    {
+        return _dl.GetAllInventory();
+    }
 
     // user methods(first):(1)get all users; (2)add user; (3)create signup method
     public List<User> GetAllUsers()
