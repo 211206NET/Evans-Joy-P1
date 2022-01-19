@@ -16,9 +16,31 @@ public class DBRepo : IRepo
         _connectionString = connectionString;
         // _connectionString = File.ReadAllText("connectionString.txt");
     }
-    public void AddInventory(int storeFrontID, int productID, Inventory inventoryToAdd)
+    public void AddToInventory(int storeFrontID, int productID, Inventory inventoryToAdd)
     {
-        throw new NotImplementedException();
+        using(SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+            string insertCmd = $"INSERT INTO Inventory (StorefrontId, ProductId, Quantity, Markup) VALUES (@storefrontID, @productID, @quantity, @markup)";
+
+            using(SqlCommand cmd = new SqlCommand(insertCmd, connection))
+            {
+                SqlParameter param = new SqlParameter("@storefrontID", storeFrontID);
+                cmd.Parameters.Add(param);
+                
+                param = new SqlParameter("@productID", productID);
+                cmd.Parameters.Add(param);
+                
+                param = new SqlParameter("@quantity", inventoryToAdd.Quantity);
+                cmd.Parameters.Add(param);
+                
+                param = new SqlParameter("@markup", inventoryToAdd.Markup);
+                cmd.Parameters.Add(param);
+
+                cmd.ExecuteNonQuery();
+            }
+            connection.Close();
+        }
     }
 
     public void AddLineitem(int inventoryID, int orderID, LineItem lineitemToAdd)
@@ -208,7 +230,6 @@ public class DBRepo : IRepo
     }
 
     public List<User> GetAllUsers()
-    // public List<User> GetAllUsers()
     {
         List<User> allUsers = new List<User>();
         using(SqlConnection connection = new SqlConnection(_connectionString))

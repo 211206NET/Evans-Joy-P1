@@ -19,7 +19,7 @@ public class AdminMenu : IMenu
             Console.WriteLine("[1] View all locations");
             Console.WriteLine("[2] Add new locations");
             Console.WriteLine("[3] Add new product");
-            Console.WriteLine("[4] Check inventory");
+            Console.WriteLine("[4] Add product to inventory");
             Console.WriteLine("[x] Go back to Main Menu", Console.ForegroundColor = ConsoleColor.Red);
             
             Console.ForegroundColor = ConsoleColor.White;
@@ -40,44 +40,7 @@ public class AdminMenu : IMenu
                 break;
 
                 case "4":
-                    viewInventory();
-                // Console.WriteLine("Inventory");
-                // List<StoreFront> allStorefronts = _bl.GetAllStoreFronts();
-                // Console.WriteLine("Select a location to add inventory.");
-                // for(int i = 0; i < allStorefronts.Count; i++)
-                // {
-                //     Console.WriteLine($"[{i}] {allStorefronts[i].DisplayStoreFront()}");
-                // }
-                // string? response = Console.ReadLine();
-                // int selection;
-
-                // bool parseSuccess = Int32.TryParse(input, out selection);
-
-                // if(parseSuccess && selection >= 0 && selection < allStorefronts.Count)
-                // {
-                //     //if the parse has been successful, then we know that the selection is integer and TryParse was able to convert the string to int successfully
-                //     //And we're making sure that our integer is staying within the bounds of our List
-                //     //now I want to collect information about the review
-                //     createReview:
-                //     Console.WriteLine("Give a rating: ");
-                //     int rating;
-                    
-                //     bool success = Int32.TryParse(Console.ReadLine(), out rating);
-                //     Console.WriteLine("Leave a Review: ");
-                //     string note = Console.ReadLine() ?? "";
-
-                //     try
-                //     {
-                //         Review newReview = new Review(rating, note);
-                //         _bl.AddReview(allRestaurants[selection].Id, newReview);
-                //         Console.WriteLine("Your review has been successfully added!");
-                //     }
-                //     catch(InputInvalidException ex)
-                //     {
-                //         Console.WriteLine(ex.Message);
-                //         goto createReview;
-                //     }
-                // }
+                    addProductToInventory();
                 break;
 
                 case "x":
@@ -109,11 +72,6 @@ public class AdminMenu : IMenu
                     {
                         Console.WriteLine($"{getAllStoreFronts[i].DisplayStoreFront()}");
                     }
-                    // int selection = Int32.Parse(Console.ReadLine()?? "");
-                    // StoreFront selectStoreFront = getAllStoreFronts[selection];
-
-                    // Console.WriteLine($"Welcome to {selectStoreFront.Name}");
-                    // Console.WriteLine("What would you like to do today?");
                 }
                 else
                 {
@@ -186,24 +144,51 @@ public class AdminMenu : IMenu
 
 
     }
-    private void viewInventory(){
-            List<StoreFront> getAllStoreFronts = _bl.GetAllStoreFronts();
-            Console.WriteLine("Select a location to add inventory:");
-                if (getAllStoreFronts.Count > 0)
+    private void addProductToInventory()
+    {
+        // select the storefront
+        List<StoreFront> getAllStoreFronts = _bl.GetAllStoreFronts();
+        Console.WriteLine("Select a location to add inventory:");
+        if (getAllStoreFronts.Count > 0)
+        {
+            for(int i = 0; i < getAllStoreFronts.Count; i++)
+            {
+                Console.WriteLine($" [{getAllStoreFronts[i].ID}] {getAllStoreFronts[i].DisplayStoreFront()}");
+            }
+            int storeSelection = Int32.Parse(Console.ReadLine()?? "");
+            // grab the storefront id
+            StoreFront selectStoreFront = getAllStoreFronts[storeSelection];
+        
+            // next select product
+            List<Product> getAllProducts = _bl.GetAllProducts();
+            Console.WriteLine($"Next add new product to the inventory at {selectStoreFront.Name}.");
+            if (getAllProducts.Count > 0)
+            {
+                for(int i = 0; i < getAllProducts.Count; i++)
                 {
-                    for(int i = 0; i < getAllStoreFronts.Count; i++)
-                    {
-                        Console.WriteLine($" [{i}] {getAllStoreFronts[i].DisplayStoreFront()}");
-                    }
-                    int selection = Int32.Parse(Console.ReadLine()?? "");
-                    StoreFront selectStoreFront = getAllStoreFronts[selection];
+                    Console.WriteLine($" [{i}] {getAllProducts[i].Name}");
+                }
+                int productSelection = Int32.Parse(Console.ReadLine()?? "");
+                // grab the product id
+                Product selectProduct = getAllProducts[productSelection];
 
-                    Console.WriteLine($"Welcome to {selectStoreFront.Name}");
-                    new InventoryMenu(_bl).Start();
-                }
-                else
-                {
-                    Console.WriteLine("There are no stores available :(");
-                }
+                Console.WriteLine($"Please add quantity and markup with {selectProduct.Name}.");
+                Console.WriteLine("Quantity:");
+                int quantity = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Markup:");
+                decimal markup = decimal.Parse(Console.ReadLine());
+
+                Inventory newInventory = new Inventory();
+                newInventory.Quantity = quantity;
+                newInventory.Markup = markup;
+                
+                _bl.AddToInventory(storeSelection, productSelection, newInventory);
+                Console.WriteLine($"Congrats! You successfully added {selectProduct.Name} at {selectStoreFront.Name}.");
+            }
         }
+        else
+        {
+            Console.WriteLine("There are no stores available :(");
+        }
+    }
 }

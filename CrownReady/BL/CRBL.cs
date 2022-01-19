@@ -35,10 +35,10 @@ public class CRBL : IBL
     /// <param name="storeFrontID">storefront obj. to add</param>
     /// <param name="productID">product obj. to add</param>
     /// <param name="inventoryToAdd"></param>
-    public void AddInventory(int storeFrontID, int productID, Inventory inventoryToAdd)
+    public void AddToInventory(int storeFrontID, int productID, Inventory inventoryToAdd)
     {
         // future code (20211214 @ 24:10)
-        _dl.AddInventory(storeFrontID, productID, inventoryToAdd);
+        _dl.AddToInventory(storeFrontID, productID, inventoryToAdd);
     }
 
 

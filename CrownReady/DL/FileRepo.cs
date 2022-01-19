@@ -46,7 +46,7 @@ public class FileRepo : IRepo
     /// </summary>
     /// <param name="storeFrontIndex">Using index to select storefront object in the list</param>
     /// <param name="inventoryToAdd">Inventory object to be added</param>
-    public void AddInventory(int storeFrontID, int productID, Inventory inventoryToAdd)
+    public void AddToInventory(int storeFrontID, int productID, Inventory inventoryToAdd)
     {
 
     }

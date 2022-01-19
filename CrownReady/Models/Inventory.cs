@@ -10,5 +10,6 @@ public class Inventory{
     // setting up automatic properties: product, quantity
     public Product Item { get; set;}
     public int Quantity { get; set; }
+    public decimal Markup { get; set; }
     
 }
