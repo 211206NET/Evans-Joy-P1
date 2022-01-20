@@ -68,6 +68,10 @@ public class FileRepo : IRepo
     {
         // _dl.AddUser(userToAdd);
     }
+    public User GetUserByName(string name)
+    {
+        throw new NotImplementedException();
+    }
     public void SignUp(string name, string email)
     {
         // _dl.SignUp(name, email);

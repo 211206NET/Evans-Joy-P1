@@ -76,7 +76,10 @@ public class CRBL : IBL
     {
         _dl.CurrentUser(currentUser);
     }
-
+    public User GetUserByName(string name)
+    {
+        return _dl.GetUserByName(name);
+    }
     // product methods(first):(1)add product;(2)get all products
     /// <summary>
     /// adds a new product to the list

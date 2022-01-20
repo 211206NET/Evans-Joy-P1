@@ -286,6 +286,26 @@ public class DBRepo : IRepo
         connection.Close ();
         return storeFront;
     }
+        public User GetUserByName(string name)
+    {
+        string query = "Select * From [User] Where Name = @name";
+        using SqlConnection connection = new SqlConnection(_connectionString);
+        connection.Open();
+        using SqlCommand cmd = new SqlCommand(query, connection);
+        SqlParameter param = new SqlParameter("@name", name);
+        cmd.Parameters.Add(param);
+
+        using SqlDataReader reader = cmd.ExecuteReader();
+        User user = new User();
+        if (reader.Read())
+        {
+            user.ID = reader.GetInt32(0);
+            user.Name = reader.GetString(1);
+            user.Email = reader.GetString(2);
+        }
+        connection.Close ();
+        return user;
+    }
     public void CurrentUser(User currentUser)
     {
         // Console.WriteLine(currentUser.Name);
