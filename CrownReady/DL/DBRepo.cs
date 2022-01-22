@@ -368,4 +368,21 @@ public class DBRepo : IRepo
         }
         return allInventory;
     }
+
+    public bool InventoryExists(int storeFrontID)
+    {
+        List<Inventory> getInventory = GetAllInventory();
+
+        foreach (Inventory inventory in getInventory) 
+            {
+                if (inventory.StoreId == storeFrontID)
+                {
+                    // CurrentUser(user); // get currect user info
+                    Console.WriteLine($"Congrats!");
+                    return true;
+                }
+            }
+        return false;
+        Console.WriteLine($"Sorry :(");
+    }
 }

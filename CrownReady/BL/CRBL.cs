@@ -44,6 +44,10 @@ public class CRBL : IBL
     {
         return _dl.GetAllInventory();
     }
+    public bool InventoryExists(int storeFrontID)
+    {
+        return _dl.InventoryExists(storeFrontID);
+    }
 
     // user methods(first):(1)get all users; (2)add user; (3)create signup method
     public List<User> GetAllUsers()

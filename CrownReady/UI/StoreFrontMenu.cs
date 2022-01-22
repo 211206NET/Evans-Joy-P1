@@ -59,6 +59,8 @@ public class StoreFrontMenu : IMenu
             int selection = Int32.Parse(Console.ReadLine() ?? "");
             StoreFront selectStoreFront = getAllStoreFronts[selection];
 
+            _bl.InventoryExists(selection);
+            
             Console.WriteLine($"Welcome to {selectStoreFront.Name}");
             if (getAllInventory.Count > 0)
             {

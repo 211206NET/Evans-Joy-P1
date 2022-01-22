@@ -54,6 +54,10 @@ public class FileRepo : IRepo
     {
         return new List<Inventory>();
     }
+    public bool InventoryExists(int storeFrontID)
+    {
+        throw new NotImplementedException();
+    }
     // user methods(first):(1)get all users; (2)add user; (3)create signup method
     public List<User> GetAllUsers()
     {
