@@ -72,6 +72,10 @@ public class FileRepo : IRepo
     {
         // _dl.AddUser(userToAdd);
     }
+    public User GetUserByName(string name)
+    {
+        throw new NotImplementedException();
+    }
     public void SignUp(string name, string email)
     {
         // _dl.SignUp(name, email);
@@ -105,7 +109,10 @@ public class FileRepo : IRepo
         // future code (20211214 @ 24:10)
         // _dl.AddOrder(userID, storeID, orderToAdd);
     }
-    
+    public Order GetOrderByUserId(int id)
+    {
+        throw new NotImplementedException();
+    }
 
     // lineitem methods(first):(1)create a lineitem object
     public void AddLineitem(int inventoryID, int orderID, LineItem lineitemToAdd)

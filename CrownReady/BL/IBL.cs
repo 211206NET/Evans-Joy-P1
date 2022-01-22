@@ -13,6 +13,7 @@ public interface IBL
 
     // user methods(first):(1)get all users; (2)add user; (3)create signup method
     List<User> GetAllUsers();
+    User GetUserByName(string name);
     void AddUser ( User userToAdd);
     void SignUp(string name, string email);
     bool LogIn(string email);
@@ -23,6 +24,7 @@ public interface IBL
     void AddProduct (Product productToAdd);
     // order methods(third):
     void AddOrder(int userID, int storeID, Order orderToAdd);
+    Order GetOrderByUserId(int id);
 
     // lineitem methods(third):(1)create a lineitem object
     void AddLineitem(int inventoryID, int orderID, LineItem lineitemToAdd);

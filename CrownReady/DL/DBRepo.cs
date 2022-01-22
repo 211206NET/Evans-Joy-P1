@@ -191,41 +191,84 @@ public class DBRepo : IRepo
     {
         List<StoreFront> allStoreFronts = new List<StoreFront>();
 
-        // using(SqlConnection connection = new SqlConnection(_connectionString))
         using SqlConnection connection = new SqlConnection(_connectionString);
+        string selectedStoreFront = "SELECT * FROM Storefront";
+        string selectedInventory = "SELECT * FROM Inventory";
 
+        string selectedProduct = "SELECT * FROM Product";
+
+        DataSet CRSet = new DataSet();
+
+        using SqlDataAdapter storefrontAdapter = new SqlDataAdapter(selectedStoreFront, connection);
+        using SqlDataAdapter inventoryAdapter = new SqlDataAdapter(selectedInventory,connection);
+
+        using SqlDataAdapter productAdapter = new SqlDataAdapter(selectedProduct,connection);
+
+        storefrontAdapter.Fill(CRSet, "Storefront");
+        inventoryAdapter.Fill(CRSet, "Inventory");
+
+        productAdapter.Fill(CRSet, "Product");
+
+        DataTable? StorefrontTable = CRSet.Tables["Storefront"];
+        DataTable? InventoryTable = CRSet.Tables["Inventory"];
+
+        DataTable? ProductTable = CRSet.Tables["Product"];
+
+        if(StorefrontTable != null && InventoryTable != null)
         {
-            connection.Open();
-
-            string queryTxt = "SELECT * FROM Storefront";
-            using(SqlCommand cmd = new SqlCommand(queryTxt, connection))
+            foreach(DataRow row in StorefrontTable.Rows)
             {
-                using(SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while(reader.Read())
-                    {
-                            StoreFront storeFront = new StoreFront();
-                            storeFront.ID = reader.GetInt32(0);
-                            // Console.WriteLine(reader.GetInt32(0));
+                StoreFront storeFront = new StoreFront(row);
 
-                            storeFront.Name = reader.GetString(1);
-                            // Console.WriteLine(reader.GetString(1));
-                            
-                            storeFront.Address = reader.GetString(2);
-                            // Console.WriteLine(reader.GetString(2));
-                            
-                            storeFront.City = reader.GetString(3);
-                            // Console.WriteLine(reader.GetString(3));
-                            
-                            storeFront.State = reader.GetString(4);
-                            // Console.WriteLine(reader.GetString(4));
-
-                            allStoreFronts.Add(storeFront);
+                storeFront.Inventories = InventoryTable.AsEnumerable().Where(s => (int) s["StorefrontId"] == storeFront.ID).Select( s =>
+                    new Inventory {
+                        ID = (int) s["ID"],
+                        StoreId = (int) s["StorefrontId"],
+                        ProductId = (int) s["ProductId"],
+                        //  Item = (Product) s ["Item"],
+                        Quantity = (int) s["Quantity"],
+                        Markup = (decimal) s["Markup"]
                     }
-                }
+
+
+                ).ToList();
+
+                allStoreFronts.Add(storeFront);
             }
-            connection.Close();
         }
+
+        // {
+        //     connection.Open();
+
+        //     string queryTxt = "SELECT * FROM Storefront";
+        //     using(SqlCommand cmd = new SqlCommand(queryTxt, connection))
+        //     {
+        //         using(SqlDataReader reader = cmd.ExecuteReader())
+        //         {
+        //             while(reader.Read())
+        //             {
+        //                     StoreFront storeFront = new StoreFront();
+        //                     storeFront.ID = reader.GetInt32(0);
+        //                     // Console.WriteLine(reader.GetInt32(0));
+
+        //                     storeFront.Name = reader.GetString(1);
+        //                     // Console.WriteLine(reader.GetString(1));
+                            
+        //                     storeFront.Address = reader.GetString(2);
+        //                     // Console.WriteLine(reader.GetString(2));
+                            
+        //                     storeFront.City = reader.GetString(3);
+        //                     // Console.WriteLine(reader.GetString(3));
+                            
+        //                     storeFront.State = reader.GetString(4);
+        //                     // Console.WriteLine(reader.GetString(4));
+
+        //                     allStoreFronts.Add(storeFront);
+        //             }
+        //         }
+        //     }
+        //     connection.Close();
+        // }
         return allStoreFronts;
     }
 
@@ -285,6 +328,26 @@ public class DBRepo : IRepo
         }
         connection.Close ();
         return storeFront;
+    }
+    public User GetUserByName(string name)
+    {
+        string query = "Select * From [User] Where Name = @name";
+        using SqlConnection connection = new SqlConnection(_connectionString);
+        connection.Open();
+        using SqlCommand cmd = new SqlCommand(query, connection);
+        SqlParameter param = new SqlParameter("@name", name);
+        cmd.Parameters.Add(param);
+
+        using SqlDataReader reader = cmd.ExecuteReader();
+        User user = new User();
+        if (reader.Read())
+        {
+            user.ID = reader.GetInt32(0);
+            user.Name = reader.GetString(1);
+            user.Email = reader.GetString(2);
+        }
+        connection.Close ();
+        return user;
     }
     public void CurrentUser(User currentUser)
     {
@@ -384,5 +447,27 @@ public class DBRepo : IRepo
             }
         return false;
         Console.WriteLine($"Sorry :(");
+    }
+    public Order GetOrderByUserId(int id)
+    {
+        string query = "Select * From [Order] Where UserId = @id";
+        using SqlConnection connection = new SqlConnection(_connectionString);
+        connection.Open();
+        using SqlCommand cmd = new SqlCommand(query, connection);
+        SqlParameter param = new SqlParameter("@id", id);
+        cmd.Parameters.Add(param);
+
+        using SqlDataReader reader = cmd.ExecuteReader();
+        Order order = new Order();
+        if (reader.Read())
+        {
+            order.CustomerId = reader.GetInt32(0);
+            order.StoreId = reader.GetInt32(1);
+            order.OrderNumber = reader.GetInt32(2);
+            //order.OrderDate = reader.GetDateTime.ToString(3);
+            order.Total = reader.GetDecimal(4);
+        }
+        connection.Close ();
+        return order;
     }
 }
