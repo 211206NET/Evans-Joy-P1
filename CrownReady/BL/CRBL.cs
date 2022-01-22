@@ -96,12 +96,15 @@ public class CRBL : IBL
 
 
     // order methods(first):
-        public void AddOrder(int userID, int storeID, Order orderToAdd)
+    public void AddOrder(int userID, int storeID, Order orderToAdd)
     {
         // future code (20211214 @ 24:10)
         _dl.AddOrder(userID, storeID, orderToAdd);
     }
-    
+    public Order GetOrderByUserId(int id)
+    {
+        return _dl.GetOrderByUserId(id);
+    }
 
     // lineitem methods(first):(1)create a lineitem object
         public void AddLineitem(int inventoryID, int orderID, LineItem lineitemToAdd)

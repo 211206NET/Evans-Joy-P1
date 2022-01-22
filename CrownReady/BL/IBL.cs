@@ -23,6 +23,7 @@ public interface IBL
     void AddProduct (Product productToAdd);
     // order methods(third):
     void AddOrder(int userID, int storeID, Order orderToAdd);
+    Order GetOrderByUserId(int id);
 
     // lineitem methods(third):(1)create a lineitem object
     void AddLineitem(int inventoryID, int orderID, LineItem lineitemToAdd);
