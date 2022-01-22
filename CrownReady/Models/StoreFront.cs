@@ -1,14 +1,32 @@
 using CustomExceptions;
 using System.Text.RegularExpressions;
+using System.Data;
 using System.ComponentModel.DataAnnotations; //check out
 
 namespace Models;
 public class StoreFront{
-    public StoreFront() {}
+    // public StoreFront() {}
+    public StoreFront()
+    {
+        this.Inventories = new List<Inventory>();
+    }
+    public StoreFront(string name)
+    {
+        this.Inventories = new List<Inventory>();
+        this.Name = name;
+    }
+    public StoreFront(DataRow row)
+    {
+        this.ID = (int) row["ID"];
+        this.Name = (string) row["Name"];
+        this.Address = (string) row["Address"];
+        this.City = (string) row["City"];
+        this.State = (string) row["State"];
+    }
     public int ID { get; set; }
 
     [Required]
-    [RegularExpression("^[a-zA-Z0-9 !?']+$", ErrorMessage = "Storefront name can only have alphanumeric characters, white space, !, ?, and '.")]
+    [RegularExpression("^[a-zA-Z0-9 !-?']+$", ErrorMessage = "Storefront name can only have alphanumeric characters, white space, !, -, ?, and '.")]
     public string Name { get; set; }
     // public string Name { 
     //     get => _name;
