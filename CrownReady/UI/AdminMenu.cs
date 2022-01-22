@@ -157,7 +157,7 @@ public class AdminMenu : IMenu
         {
             for(int i = 0; i < getAllStoreFronts.Count; i++)
             {
-                Console.WriteLine($" [{getAllStoreFronts[i].ID}] {getAllStoreFronts[i].DisplayStoreFront()}");
+                Console.WriteLine($"[{i}] [{getAllStoreFronts[i].ID}] {getAllStoreFronts[i].DisplayStoreFront()}");
             }
             int storeSelection = Int32.Parse(Console.ReadLine()?? "");
             // grab the storefront id
@@ -186,7 +186,7 @@ public class AdminMenu : IMenu
                 newInventory.Quantity = quantity;
                 newInventory.Markup = markup;
                 
-                _bl.AddToInventory(storeSelection, productSelection, newInventory);
+                _bl.AddToInventory(selectStoreFront.ID, selectProduct.ID, newInventory);
                 Console.WriteLine($"Congrats! You successfully added {selectProduct.Name} at {selectStoreFront.Name}.");
             }
         }
