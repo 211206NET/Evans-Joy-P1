@@ -445,11 +445,14 @@ public class DBRepo : IRepo
                     return true;
                 }
             }
-        return false;
         Console.WriteLine($"Sorry :(");
+        return false;
     }
-    public Order GetOrderByUserId(int id)
+    // public Order GetOrderByUserId(int id)
+    public List<Order> GetOrderByUserId(int id)
     {
+        List<Order> allOrders = new List<Order>();
+
         string query = "Select * From [Order] Where UserId = @id";
         using SqlConnection connection = new SqlConnection(_connectionString);
         connection.Open();
@@ -462,12 +465,24 @@ public class DBRepo : IRepo
         if (reader.Read())
         {
             order.CustomerId = reader.GetInt32(0);
+            Console.WriteLine(reader.GetInt32(0));
+
             order.StoreId = reader.GetInt32(1);
+            Console.WriteLine(reader.GetInt32(1));
+
             order.OrderNumber = reader.GetInt32(2);
-            //order.OrderDate = reader.GetDateTime.ToString(3);
-            order.Total = reader.GetDecimal(4);
+            Console.WriteLine(reader.GetInt32(2));
+            
+            order.OrderDate = reader.GetDateTime(reader.GetOrdinal("OrderDate"));
+            // order.OrderDate = reader.GetDateTime(3);
+            Console.WriteLine(reader.GetDateTime(reader.GetOrdinal("OrderDate")));
+            
+            order.Total = reader.GetDecimal(reader.GetOrdinal("Total"));
+            Console.WriteLine(reader.GetDecimal(reader.GetOrdinal("Total")));
+
+            allOrders.Add(order);
         }
         connection.Close ();
-        return order;
+        return allOrders;
     }
 }

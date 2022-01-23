@@ -30,7 +30,7 @@ public class StoreFrontMenu : IMenu
                 break;
 
                 case "2":
-                    Console.WriteLine("Coming Soon: View Previous Orders");
+                viewAllOrders();
                 break;
 
                 case "x":
@@ -78,6 +78,26 @@ public class StoreFrontMenu : IMenu
         else
         {
             Console.WriteLine("There are no stores available :(");
+        }
+    }
+
+    public void viewAllOrders()
+    {
+        Console.WriteLine("Enter ID");
+        int userInput = Int32.Parse(Console.ReadLine() ?? "");
+        // int input = Int32.Parse(userInput);
+        // _bl.GetOrderByUserId(userInput);
+        List<Order> getAllOrders = _bl.GetOrderByUserId(userInput);
+        if (getAllOrders.Count > 0)
+        {
+            for(int i = 0; i < getAllOrders.Count; i++)
+            {
+                Console.WriteLine($" [{i}]");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Boo!");
         }
     }
 }

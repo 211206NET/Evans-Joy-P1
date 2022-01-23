@@ -109,9 +109,11 @@ public class FileRepo : IRepo
         // future code (20211214 @ 24:10)
         // _dl.AddOrder(userID, storeID, orderToAdd);
     }
-    public Order GetOrderByUserId(int id)
+    // public Order GetOrderByUserId(int id);
+    public List<Order> GetOrderByUserId(int id)
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException();
+        return new List<Order>();
     }
 
     // lineitem methods(first):(1)create a lineitem object

@@ -105,7 +105,8 @@ public class CRBL : IBL
         // future code (20211214 @ 24:10)
         _dl.AddOrder(userID, storeID, orderToAdd);
     }
-    public Order GetOrderByUserId(int id)
+    // public Order GetOrderByUserId(int id);
+    public List<Order> GetOrderByUserId(int id)
     {
         return _dl.GetOrderByUserId(id);
     }
