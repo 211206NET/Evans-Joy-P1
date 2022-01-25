@@ -25,18 +25,8 @@ namespace WebAPI.Controllers
         // GET api/<OrderController>/5
         [HttpGet("{id}")]
         public List<Order> Get(int id)
-        // public ActionResult<Order> Get(int id)
         {
-            return _bl.GetOrderByUserId(id);
-            // Order foundUserOrder = _bl.GetOrderByUserId(id);
-            // if(foundUserOrder.CustomerId != 0)
-            // {
-            //     return Ok(foundUserOrder);
-            // }
-            // else
-            // {
-            //     return NoContent();
-            // }
+            return _bl.GetOrderByStoreId(id);
         }
 
         // POST api/<OrderController>

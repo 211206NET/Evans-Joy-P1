@@ -105,10 +105,13 @@ public class CRBL : IBL
         // future code (20211214 @ 24:10)
         _dl.AddOrder(userID, storeID, orderToAdd);
     }
-    // public Order GetOrderByUserId(int id);
     public List<Order> GetOrderByUserId(int id)
     {
         return _dl.GetOrderByUserId(id);
+    }
+    public List<Order> GetOrderByStoreId(int id)
+    {
+        return _dl.GetOrderByStoreId(id);
     }
 
     // lineitem methods(first):(1)create a lineitem object

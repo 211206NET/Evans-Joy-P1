@@ -37,6 +37,13 @@ namespace WebAPI.Controllers
             }
         }
 
+        // GET api/<OrderController>/5
+        [HttpGet("{id}")]
+        public List<Order> Get(int id)
+        {
+            return _bl.GetOrderByUserId(id);
+        }
+
         // POST api/<UserController>
         [HttpPost]
         public ActionResult Post([FromBody] User userToAdd)

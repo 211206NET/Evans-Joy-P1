@@ -23,8 +23,8 @@ public interface IRepo
     
     // order methods(second):
     void AddOrder(int userID, int storeID, Order orderToAdd);
-    // Order GetOrderByUserId(int id);
     List<Order> GetOrderByUserId(int id);
+    List<Order> GetOrderByStoreId(int id);
 
     // lineitem methods(second):(1)create a lineitem object
     void AddLineitem(int inventoryID, int orderID, LineItem lineitemToAdd);
