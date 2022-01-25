@@ -32,7 +32,7 @@ public class StoreFront{
     //     get => _name;
     //     set
     //     {
-    //         Regex pattern = new Regex("^[a-zA-Z0-9 !?']+$");
+    //         Regex pattern = new Regex("^[a-zA-Z0-9 !-?']+$");
     //         if(string.IsNullOrWhiteSpace(value))
     //         {
     //             throw new InputInvalidException("Name can't be empty");
