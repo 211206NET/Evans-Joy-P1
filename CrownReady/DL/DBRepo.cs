@@ -454,35 +454,64 @@ public class DBRepo : IRepo
         List<Order> allOrders = new List<Order>();
 
         string query = "Select * From [Order] Where UserId = @id";
+
         using SqlConnection connection = new SqlConnection(_connectionString);
+
         connection.Open();
+
         using SqlCommand cmd = new SqlCommand(query, connection);
+
         SqlParameter param = new SqlParameter("@id", id);
+
         cmd.Parameters.Add(param);
 
         using SqlDataReader reader = cmd.ExecuteReader();
-        Order order = new Order();
-        if (reader.Read())
-        {
-            order.CustomerId = reader.GetInt32(0);
-            Console.WriteLine(reader.GetInt32(0));
+        // Order order = new Order();
+        // if (reader.Read())
 
-            order.StoreId = reader.GetInt32(1);
-            Console.WriteLine(reader.GetInt32(1));
+        while (reader.Read())  
+                {  
+                Order order = new Order();  
+                {  
+                    order.CustomerId = reader.GetInt32(0);
+                    Console.WriteLine(reader.GetInt32(0));
 
-            order.OrderNumber = reader.GetInt32(2);
-            Console.WriteLine(reader.GetInt32(2));
+                    order.StoreId = reader.GetInt32(1);
+                    Console.WriteLine(reader.GetInt32(1));
+
+                    order.OrderNumber = reader.GetInt32(2);
+                    Console.WriteLine(reader.GetInt32(2));
+                    
+                    order.OrderDate = reader.GetDateTime(reader.GetOrdinal("OrderDate"));
+                    // order.OrderDate = reader.GetDateTime(3);
+                    Console.WriteLine(reader.GetDateTime(reader.GetOrdinal("OrderDate")));
+                    
+                    order.Total = reader.GetDecimal(reader.GetOrdinal("Total"));
+                    Console.WriteLine(reader.GetDecimal(reader.GetOrdinal("Total"))); 
+                };  
+                    allOrders.Add(order);  
+                }
+                return allOrders;
+
+        // {
+            // order.CustomerId = reader.GetInt32(0);
+            // Console.WriteLine(reader.GetInt32(0));
+
+            // order.StoreId = reader.GetInt32(1);
+            // Console.WriteLine(reader.GetInt32(1));
+
+            // order.OrderNumber = reader.GetInt32(2);
+            // Console.WriteLine(reader.GetInt32(2));
             
-            order.OrderDate = reader.GetDateTime(reader.GetOrdinal("OrderDate"));
-            // order.OrderDate = reader.GetDateTime(3);
-            Console.WriteLine(reader.GetDateTime(reader.GetOrdinal("OrderDate")));
+            // order.OrderDate = reader.GetDateTime(reader.GetOrdinal("OrderDate"));
+            // // order.OrderDate = reader.GetDateTime(3);
+            // Console.WriteLine(reader.GetDateTime(reader.GetOrdinal("OrderDate")));
             
-            order.Total = reader.GetDecimal(reader.GetOrdinal("Total"));
-            Console.WriteLine(reader.GetDecimal(reader.GetOrdinal("Total")));
+            // order.Total = reader.GetDecimal(reader.GetOrdinal("Total"));
+            // Console.WriteLine(reader.GetDecimal(reader.GetOrdinal("Total")));
 
-            allOrders.Add(order);
-        }
+            // allOrders.Add(order);
         connection.Close ();
-        return allOrders;
-    }
+        }
+        // return allOrders;
 }
