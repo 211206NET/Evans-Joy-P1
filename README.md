@@ -1,33 +1,22 @@
-<h1 align="center"> CrownReady Beauty Supply </h1>
+## CrownReady Beauty Supply
 
-##  Overview
+##  Project Description
 <p align="center">
   Life during the pandemic has challenging needless to say.
 </p>
 
-## Table of Contents
-- [Tech Stack](#tech-stack)
-- [Functionality](#functionality)
-- [User Stories](#user-stories)
-- [Additional Features](#additional-features)
-
-## Tech Stack
+## Technologies Used
 - C#
 - Xunit
 - AWS RDS SQLServer DB
 - ADO.NET
 - ASP.NET Core WEB API
 
-## Functionality
+## Features
 * Add a new user
 * Search for users by name
 * Add a new storefront
 * View order history of user
-
-## User Stories
-* As a customer, I can sign up using my name and email.
-* As a customer, I can view all storefront locations.
-* As an admin, I can add new storefronts.
 
 ## Additional Features
 * Clone or download the repo
@@ -35,3 +24,12 @@
 * Unit tests
 * Data are persisted
 * Have an ER Diagram
+
+## User Stories
+* As a customer, I can sign up using my name and email.
+* As a customer, I can view all storefront locations.
+* As an admin, I can add new storefronts.
+
+## Getting Started
+## Usage
+## License
