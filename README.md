@@ -1,8 +1,8 @@
 ## CrownReady Beauty Supply
 
 ##  Project Description
-<p align="center">
-  Life during the pandemic has challenging needless to say.
+<p>
+Welcome to CrownBeauty Supply! Whether you need help finding conditioner or shampoo brush, the app's purpose is to help customers find the right product no matter your skin type or hair texture!
 </p>
 
 ## Technologies Used
