@@ -5,6 +5,9 @@ on:
     branches: [ production ]
   pull_request:
     branches: [ production ]
+    
+env:
+  WORKING_DIRECTORY: CrownReady
 
 jobs:
   build:
@@ -18,7 +21,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ${{env.WORKING_DIRECTORY}}
     - name: Build
       run: dotnet build --no-restore
     - name: Test
