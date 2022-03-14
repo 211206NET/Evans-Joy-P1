@@ -19,5 +19,7 @@ Welcome to CrownBeauty Supply! Whether you need help finding conditioner or sham
 * View order history of user
 
 ## Getting Started
+
 ## Usage
+
 ## License
