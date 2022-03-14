@@ -7,7 +7,7 @@ on:
     branches: [ production ]
     
 env:
-  WORKING_DIRECTORY: CrownReady
+  WORKING_DIRECTORY: CrownReady/CrownReady.sln
 
 jobs:
   build:
